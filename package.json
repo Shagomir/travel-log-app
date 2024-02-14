@@ -1,0 +1,26 @@
+{
+  "name": "project-three-prebuild",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/server.js",
+  "scripts": {
+    "start": "node server --ignore client",
+    "develop": "concurrently \"cd server && npm run start\" \"cd client && npm run dev\"",
+    "install": "cd server && npm i && cd ../client && npm i",
+    "seed": "cd server && npm run seed",
+    "build": "cd client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shagomir/project-three-prebuild.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shagomir/project-three-prebuild/issues"
+  },
+  "homepage": "https://github.com/Shagomir/project-three-prebuild#readme",
+  "devDependencies": {
+    "concurrency": "^0.1.4"
+  }
+}
