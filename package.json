@@ -21,6 +21,6 @@
   },
   "homepage": "https://github.com/Shagomir/project-three-prebuild#readme",
   "devDependencies": {
-    "concurrency": "^0.1.4"
+    "concurrently": "^5.1.0"
   }
 }
