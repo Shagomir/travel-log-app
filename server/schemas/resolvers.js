@@ -1,38 +1,77 @@
-const User = require("../models/User");
+const { User, Location } = require('../models');
 const { signToken, AuthenticationError } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    user: async (parent, args, context) => {
-      if (context.user) {
-        const user = await User.findById(context.user._id).populate({
-          path: "orders.products",
-          populate: "category",
-        });
-
-        return user;
-      }
-
-      throw AuthenticationError;
+    users: async () => {
+      return User.find().populate('locations');
+    },
+    user: async (parent, { username }) => {
+      return User.findOne({ username }).populate('locations');
+    },
+    locations: async (parent, { username }) => {
+      const params = username ? { username } : {};
+      return Location.find(params).sort({ createdAt: -1 });
+    },
+    location: async (parent, { locationId }) => {
+      return Location.findOne({ _id: locationId });
     },
   },
-  Mutation: {
-    addUser: async (parent, args) => {
-      const user = await User.create(args);
-      const token = signToken(user);
 
+  Mutation: {
+    addUser: async (parent, { username, email, password }) => {
+      const user = await User.create({ username, email, password });
+      const token = signToken(user);
       return { token, user };
     },
     login: async (parent, { email, password }) => {
       const user = await User.findOne({ email });
+
       if (!user) {
         throw AuthenticationError;
       }
+
       const correctPw = await user.isCorrectPassword(password);
+
       if (!correctPw) {
         throw AuthenticationError;
       }
+
+      const token = signToken(user);
+
       return { token, user };
+    },
+    addLocation: async (parent, { locationText, locationAuthor }) => {
+      const location = await Location.create({ locationText, locationAuthor });
+
+      await User.findOneAndUpdate(
+        { username: locationAuthor },
+        { $addToSet: { locations: location._id } }
+      );
+
+      return location;
+    },
+    addIdea: async (parent, { locationId, ideaText, ideaAuthor }) => {
+      return Location.findOneAndUpdate(
+        { _id: locationId },
+        {
+          $addToSet: { ideas: { ideaText, ideaAuthor } },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+    },
+    removeLocation: async (parent, { locationId }) => {
+      return Location.findOneAndDelete({ _id: locationId });
+    },
+    removeIdea: async (parent, { locationId, ideaId }) => {
+      return Location.findOneAndUpdate(
+        { _id: locationId },
+        { $pull: { ideas: { _id: ideaId } } },
+        { new: true }
+      );
     },
   },
 };

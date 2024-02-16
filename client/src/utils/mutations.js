@@ -21,3 +21,33 @@ export const ADD_USER = gql`
     }
   }
 `;
+export const ADD_LOCATION = gql`
+  mutation addLocation($locationText: String!) {
+    addLocation(locationText: $locationText) {
+      _id
+      locationText
+      locationAuthor
+      createdAt
+      ideas {
+        _id
+        ideaText
+      }
+    }
+  }
+`;
+
+export const ADD_IDEA = gql`
+  mutation addIdea($locationId: ID!, $ideaText: String!) {
+    addIdea(locationId: $locationId, ideaText: $ideaText) {
+      _id
+      locationText
+      locationAuthor
+      createdAt
+      ideas {
+        _id
+        ideaText
+        createdAt
+      }
+    }
+  }
+`;
