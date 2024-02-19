@@ -6,7 +6,7 @@ const { Provider } = PageContext;
 
 const PageProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
-    lists: [],
+    locations: [],
   });
 
   return <Provider value={[state, dispatch]} {...props} />;

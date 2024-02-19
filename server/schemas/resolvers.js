@@ -1,13 +1,13 @@
-const { User, Location } = require('../models');
-const { signToken, AuthenticationError } = require("../utils/auth");
+const { User, Location } = require("../models");
+const { signToken, AuthenticationError, getToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('locations');
+      return User.find().populate("locations");
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('locations');
+      return User.findOne({ username }).populate("locations");
     },
     locations: async (parent, { username }) => {
       const params = username ? { username } : {};
@@ -15,6 +15,11 @@ const resolvers = {
     },
     location: async (parent, { locationId }) => {
       return Location.findOne({ _id: locationId });
+    },
+    me: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOne({ _id: context.user._id }).populate("locations");
+      }
     },
   },
 
