@@ -30,11 +30,11 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/lists",
+        path: "/list",
         element: <List />,
       },
       {
-        path: "/lists/:id",
+        path: "/list/:id",
         element: <ListDetail />,
       },
     ],
