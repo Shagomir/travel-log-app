@@ -22,8 +22,8 @@ export const ADD_USER = gql`
   }
 `;
 export const ADD_LOCATION = gql`
-  mutation addLocation($locationText: String!) {
-    addLocation(locationText: $locationText) {
+  mutation addLocation($locationText: String!, $locationAuthor: String!) {
+    addLocation(locationText: $locationText, locationAuthor: $locationAuthor) {
       _id
       locationText
       locationAuthor
