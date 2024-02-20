@@ -8,8 +8,10 @@ function Signup(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [addUser] = useMutation(ADD_USER);
 
+  // update state based on form input changes
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+    // create user in database
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
@@ -17,6 +19,7 @@ function Signup(props) {
         username: formState.username,
       },
     });
+    // create the token and store it in localStorage so the user is signed in after signing up
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
   };
@@ -28,7 +31,7 @@ function Signup(props) {
       [name]: value,
     });
   };
-
+//   The signup form will allow users to sign up for the application.
   return (
     <div className="container my-1">
       <Link to="/login">← Go to Login</Link>
