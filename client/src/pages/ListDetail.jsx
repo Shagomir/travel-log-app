@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 import Auth from "../utils/auth";
 import IdeaForm from "../components/IdeaForm";
+import Idea from "../components/Idea";
 
 const ListDetail = () => {
   const { id } = useParams();
@@ -15,15 +16,32 @@ const ListDetail = () => {
   const location = data?.location || {};
   const ideas = location.ideas || [];
 
+  const handleDelete = async () => {
+    window.location.assign(`/delete/${id}`);
+  };
+
   if (Auth.loggedIn()) {
     return (
       <>
         <div>
           <h4>{location.locationText}</h4>
+          <button className="location-delete" onClick={handleDelete}>
+            Delete Location
+          </button>
           <ul>
-            {ideas.map((idea) => (
-              <li key={idea._id}>{idea.ideaText}</li>
-            ))}
+            {ideas.map(
+              (idea) => (
+                console.log(idea),
+                (
+                  <Idea
+                    key={idea._id}
+                    locationId={id}
+                    ideaId={idea._id}
+                    ideaText={idea.ideaText}
+                  />
+                )
+              )
+            )}
           </ul>
         </div>
         <div>
