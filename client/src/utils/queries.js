@@ -1,5 +1,5 @@
 import { gql } from "@apollo/client";
-
+// pass in username as an argument to the user query
 export const QUERY_USER = gql`
   query user($username: String!) {
     user(username: $username) {
@@ -14,7 +14,7 @@ export const QUERY_USER = gql`
     }
   }
 `;
-
+// this returns all locations by all users - not used
 export const QUERY_Locations = gql`
   query getLocations {
     locations {
@@ -26,6 +26,7 @@ export const QUERY_Locations = gql`
   }
 `;
 
+// this returns a single location by locationId
 export const QUERY_SINGLE_LOCATION = gql`
   query getSingleLocation($locationId: ID!) {
     location(locationId: $locationId) {
@@ -43,6 +44,7 @@ export const QUERY_SINGLE_LOCATION = gql`
   }
 `;
 
+// this returns user data and all locations by a single user
 export const QUERY_ME = gql`
   {
     me {
@@ -59,6 +61,7 @@ export const QUERY_ME = gql`
   }
 `;
 
+// this returns user data but no locations - for troubleshooting
 export const QUERY_ME_BASIC = gql`
   {
     me {
@@ -68,3 +71,4 @@ export const QUERY_ME_BASIC = gql`
     }
   }
 `;
+//path: client/src/utils/queries.js

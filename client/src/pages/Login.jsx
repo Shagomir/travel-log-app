@@ -8,9 +8,11 @@ function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
   const [login, { error }] = useMutation(LOGIN);
 
+  // update state based on form input changes
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      // execute login mutation and pass in variable data from form
       const mutationResponse = await login({
         variables: { email: formState.email, password: formState.password },
       });
@@ -29,6 +31,7 @@ function Login(props) {
     });
   };
 
+  //   The login form will allow users to log in to the application.
   return (
     <div className="container my-1">
       <Link to="/signup">← Go to Signup</Link>

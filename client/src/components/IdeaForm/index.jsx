@@ -10,7 +10,8 @@ const IdeaForm = ({ locationId, user }) => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    try {
+      try {
+        // add idea to database
       const { data } = await addIdea({
         variables: {
           locationId: locationId,
@@ -18,14 +19,18 @@ const IdeaForm = ({ locationId, user }) => {
           ideaAuthor: user,
         },
       });
-      console.log(data);
+        console.log(data);
+        // Clear form value
       setFormState({ newLocation: "" });
     } catch (e) {
       console.error(e);
-    }
+      }
+      // Refresh the page after adding the idea
     window.location.assign(`/location/${locationId}`);
   };
 
+    
+    // update state based on form input changes
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormState({

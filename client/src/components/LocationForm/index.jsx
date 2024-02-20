@@ -9,6 +9,7 @@ function Locationform({ user }) {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
+      // add location to database
       const { data } = await addLocation({
         variables: {
           locationText: formState.newLocation,
@@ -16,10 +17,12 @@ function Locationform({ user }) {
         },
       });
       console.log(data);
+      // Clear form value
       setFormState({ newLocation: "" });
     } catch (e) {
       console.error(e);
     }
+    // Refresh the page after adding the location
     window.location.assign("/location");
   };
 

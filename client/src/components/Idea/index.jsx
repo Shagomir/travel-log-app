@@ -6,23 +6,25 @@ function Idea({ locationId, ideaId, ideaText }) {
   const [deleteIdea, { error }] = useMutation(REMOVE_IDEA);
   const handleDelete = async () => {
     try {
+      // remove idea from database
       const { data } = await deleteIdea({
         variables: {
           locationId: locationId,
           ideaId: ideaId,
         },
       });
-      console.log(data);
+      //   console.log(data);
     } catch (e) {
       console.error(e);
     }
+    // Refresh the page after deleting the idea
     window.location.assign(`/location/${locationId}`);
   };
 
   return (
     <li key={ideaId}>
       {ideaText}
-      <button class="idea-delete" onClick={handleDelete}>
+      <button className="idea-delete" onClick={handleDelete}>
         X
       </button>
     </li>

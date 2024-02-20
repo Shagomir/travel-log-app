@@ -7,7 +7,7 @@ const Confirm = () => {
   const { id: locationId } = useParams();
   console.log(locationId);
   const [deleteIdea, { error }] = useMutation(REMOVE_LOCATION);
-
+  //   The handleDelete function will delete the location and all of its ideas from the database.
   const handleDelete = () => {
     try {
       const { data } = deleteIdea({
@@ -21,7 +21,7 @@ const Confirm = () => {
     }
     window.location.assign(`/location/`);
   };
-
+  //   The handleCancel function will redirect the user back to the location detail page if they decide not to delete the location.
   const handleCancel = () => {
     window.location.assign(`/location/${locationId}`);
   };
