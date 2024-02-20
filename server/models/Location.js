@@ -1,15 +1,15 @@
-const { Schema, model } = require('mongoose');
-const dateFormat = require('../utils/dateFormat');
+const { Schema, model } = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const locationSchema = new Schema({
-  name: {
+  locationText: {
     type: String,
     required: true,
     minlength: 1,
     maxlength: 280,
     trim: true,
   },
-  geolocation: {
+  locationAuthor: {
     type: String,
     required: true,
     trim: true,
@@ -40,6 +40,6 @@ const locationSchema = new Schema({
   ],
 });
 
-const Location = model('Location', locationSchema);
+const Location = model("Location", locationSchema);
 
 module.exports = Location;
