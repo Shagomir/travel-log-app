@@ -1,3 +1,4 @@
+const { default: mongoose, Types } = require("mongoose");
 const { User, Location } = require("../models");
 const { signToken, AuthenticationError, getToken } = require("../utils/auth");
 
