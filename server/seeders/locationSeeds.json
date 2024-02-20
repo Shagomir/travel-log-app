@@ -2,7 +2,21 @@
   {
     "locationText": "Grand Canyon",
     "locationAuthor": "Shagomir",
-    "geolocation": "36.2679° N, 112.3535° W"
+    "geolocation": "36.2679° N, 112.3535° W",
+    "ideas": [
+      {
+        "ideaText": "Hike the Grand Canyon",
+        "ideaAuthor": "Shagomir"
+      },
+      {
+        "ideaText": "Take a helicopter tour",
+        "ideaAuthor": "Shagomir"
+      },
+      {
+        "ideaText": "Raft the Colorado River",
+        "ideaAuthor": "Shagomir"
+      }
+    ]
   },
   {
     "locationText": "Everglades, FL",

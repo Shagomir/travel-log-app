@@ -37,8 +37,12 @@ export const ADD_LOCATION = gql`
 `;
 
 export const ADD_IDEA = gql`
-  mutation addIdea($locationId: ID!, $ideaText: String!) {
-    addIdea(locationId: $locationId, ideaText: $ideaText) {
+  mutation addIdea($locationId: ID!, $ideaText: String!, $ideaAuthor: String) {
+    addIdea(
+      locationId: $locationId
+      ideaText: $ideaText
+      ideaAuthor: $ideaAuthor
+    ) {
       _id
       locationText
       locationAuthor

@@ -39,7 +39,7 @@ const typeDefs = `
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addLocation(locationText: String!, locationAuthor: String!): Location
-    addIdea(locationId: ID!, ideaText: String!): Location
+    addIdea(locationId: ID!, ideaText: String! ideaAuthor: String): Location
     removeLocation(locationId: ID!): Location
     removeIdea(locationId: ID!, ideaId: ID!): Location
   }
