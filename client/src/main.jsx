@@ -9,6 +9,7 @@ import NoMatch from "./pages/NoMatch";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import List from "./pages/List";
+import Confirm from "./pages/Confirm";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/location/:id",
         element: <ListDetail />,
+      },
+      {
+        path: "/delete/:id",
+        element: <Confirm />,
       },
     ],
   },

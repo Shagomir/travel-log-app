@@ -55,3 +55,33 @@ export const ADD_IDEA = gql`
     }
   }
 `;
+
+export const REMOVE_LOCATION = gql`
+  mutation removeLocation($locationId: ID!) {
+    removeLocation(locationId: $locationId) {
+      _id
+      locationText
+      locationAuthor
+      createdAt
+      ideas {
+        _id
+        ideaText
+      }
+    }
+  }
+`;
+
+export const REMOVE_IDEA = gql`
+  mutation removeIdea($locationId: ID!, $ideaId: ID!) {
+    removeIdea(locationId: $locationId, ideaId: $ideaId) {
+      _id
+      locationText
+      locationAuthor
+      createdAt
+      ideas {
+        _id
+        ideaText
+      }
+    }
+  }
+`;
