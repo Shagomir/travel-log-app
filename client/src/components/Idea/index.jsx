@@ -21,6 +21,7 @@ function Idea({ locationId, ideaId, ideaText }) {
     window.location.assign(`/location/${locationId}`);
   };
 
+  //   The Idea component will display the idea text and a delete button.
   return (
     <li key={ideaId}>
       {ideaText}

@@ -43,6 +43,10 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/error", 
+        element: <NoMatch />,
+      },
+      {
         path: "/location",
         element: <List />,
       },
