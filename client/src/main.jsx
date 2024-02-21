@@ -1,6 +1,8 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ChakraProvider } from '@chakra-ui/react';
+import { extendTheme } from '@chakra-ui/react';
 
 import App from "./App.jsx";
 import Home from "./pages/Home";
@@ -10,6 +12,16 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import List from "./pages/List";
 import Confirm from "./pages/Confirm";
+
+const colors = {
+  brand: {
+    900: '',
+    800: '',
+    700: '',
+  },
+}
+
+const theme = extendTheme({ colors })
 
 const router = createBrowserRouter([
   {
@@ -46,6 +58,6 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <ChakraProvider theme={theme}><RouterProvider router={router} /></ChakraProvider>
 );
