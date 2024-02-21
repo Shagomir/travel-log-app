@@ -34,6 +34,7 @@ function Locationform({ user }) {
     });
   };
 
+  //   The LocationForm component will allow users to add a new location to the database.
   return (
     <div>
       <h3>Add a Location</h3>

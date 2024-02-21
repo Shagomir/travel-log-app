@@ -31,7 +31,7 @@ function Signup(props) {
       [name]: value,
     });
   };
-//   The signup form will allow users to sign up for the application.
+  //   The signup form will allow users to sign up for the application.
   return (
     <div className="container my-1">
       <Link to="/login">← Go to Login</Link>

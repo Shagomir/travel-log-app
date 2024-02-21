@@ -88,4 +88,6 @@ export const REMOVE_IDEA = gql`
     }
   }
 `;
+
+
 //path: client/src/utils/mutations.js

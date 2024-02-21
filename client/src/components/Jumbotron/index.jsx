@@ -9,3 +9,4 @@ function Jumbotron({ children }) {
 }
 
 export default Jumbotron;
+// Path: client/src/components/Jumbotron/index.jsx

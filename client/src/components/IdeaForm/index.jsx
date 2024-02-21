@@ -39,6 +39,7 @@ const IdeaForm = ({ locationId, user }) => {
     });
   };
 
+  //   The IdeaForm component will allow users to add a new idea to the location.
   return (
     <div>
       <form onSubmit={handleFormSubmit}>
