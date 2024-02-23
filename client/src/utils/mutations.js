@@ -78,6 +78,17 @@ export const REMOVE_LOCATION = gql`
     }
   }
 `;
+export const UPDATE_LOCATION = gql`
+  mucation updateLocation($locationId: ID!){
+    updateLocation()
+    (locationId: $locationId) {
+      _id
+      locationText
+      locationAuthor
+      geolocation
+      imageURL
+  }
+`;
 
 // pass in the locationId and ideaId as arguments to the removeIdea mutation
 export const REMOVE_IDEA = gql`
