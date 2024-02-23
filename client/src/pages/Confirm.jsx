@@ -2,6 +2,7 @@ import React from "react";
 import { REMOVE_LOCATION } from "../utils/mutations";
 import { useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+import { Button } from '@chakra-ui/react';
 
 const Confirm = () => {
   const { id: locationId } = useParams();
@@ -30,12 +31,12 @@ const Confirm = () => {
     <>
       <h4>This will delete the location and all of its ideas! Are you sure?</h4>
 
-      <button className="location-delete" onClick={handleCancel}>
+      <Button className="location-delete" onClick={handleCancel}>
         No, I changed my mind!
-      </button>
-      <button className="location-delete" onClick={handleDelete}>
+      </Button>
+      <Button className="location-delete" onClick={handleDelete}>
         Yes, delete it!
-      </button>
+      </Button>
     </>
   );
 };

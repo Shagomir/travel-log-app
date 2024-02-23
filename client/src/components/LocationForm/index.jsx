@@ -1,6 +1,20 @@
 import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_LOCATION } from "../../utils/mutations";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  Flex,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Heading,
+  Input,
+} from '@chakra-ui/react'
 
 function Locationform({ user }) {
   const [formState, setFormState] = useState({ newLocation: "" });
@@ -36,25 +50,27 @@ function Locationform({ user }) {
 
   //   The LocationForm component will allow users to add a new location to the database.
   return (
-    <div>
-      <h3>Add a Location</h3>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="location">Enter New Location:</label>
-          <input
-            placeholder="Yellowsone National Park"
-            name="newLocation"
-            type="newLocation"
-            id="newLocation"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row flex-end">
-          <button type="submit">Add Location</button>
-        </div>
-      </form>
-      {error && <div>Something went wrong...</div>}
-    </div>
+    <Card mt="4">
+      <CardBody>
+        <Heading size="md" mt="2" mb="2">Add a Location</Heading>
+        <form onSubmit={handleFormSubmit}>
+          <FormControl className="flex-row space-between my-2">
+            <FormLabel htmlFor="location">Enter New Location:</FormLabel>
+            <Input
+              placeholder="Yellowstone National Park"
+              name="newLocation"
+              type="newLocation"
+              id="newLocation"
+              onChange={handleChange}
+            />
+          </FormControl>
+          <div className="flex-row flex-end">
+            <Button type="submit" mt="2" mb="2">Add Location</Button>
+          </div>
+        </form>
+        {error && <div>Something went wrong...</div>}
+      </CardBody>
+    </Card>
   );
 }
 
