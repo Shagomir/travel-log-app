@@ -9,6 +9,8 @@ export const QUERY_USER = gql`
       locations {
         _id
         locationtText
+        geolocation
+        imageURL
         createdAt
       }
     }

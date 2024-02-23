@@ -40,7 +40,7 @@ const typeDefs = `
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addLocation(locationText: String!, locationAuthor: String!): Location
+    addLocation(locationText: String!, locationAuthor: String!, geolocation: String, imageURL: String): Location
     addIdea(locationId: ID!, ideaText: String! ideaAuthor: String): Location
     removeLocation(locationId: ID!): Location
     removeIdea(locationId: ID!, ideaId: ID!): Location
