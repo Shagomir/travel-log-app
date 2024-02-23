@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
 import {
+  AbsoluteCenter,
   Box,
   Button,
   ButtonGroup,
@@ -47,7 +48,7 @@ function Login(props) {
 
   //   The login form will allow users to log in to the application.
   return (
-    <Box display="flex" alignItems="center">
+    <AbsoluteCenter>
       <Card>
         <CardBody>
           <Heading size="md" mb="2">Login</Heading>
@@ -84,7 +85,7 @@ function Login(props) {
           </form>
         </CardBody>
       </Card>
-    </Box>
+    </AbsoluteCenter>
   );
 }
 

@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
 import {
+  AbsoluteCenter,
   Button,
   ButtonGroup,
   Card,
@@ -45,9 +46,10 @@ function Signup(props) {
   };
   //   The signup form will allow users to sign up for the application.
   return (
-    <Card>
-      <CardBody onSubmit={handleFormSubmit}>
-      <Heading size="md" mb="2">Sign Up</Heading>
+    <AbsoluteCenter>
+      <Card>
+        <CardBody onSubmit={handleFormSubmit}>
+          <Heading size="md" mb="2">Sign Up</Heading>
           <FormControl>
             <FormLabel htmlFor="username">User Name:</FormLabel>
             <Input
@@ -82,8 +84,9 @@ function Signup(props) {
             <Button mt="4" type="submit">Submit</Button>
           </div>
           <Link to="/login">← Go to Login</Link>
-      </CardBody>
-    </Card>
+        </CardBody>
+      </Card>
+    </AbsoluteCenter>
   );
 }
 
