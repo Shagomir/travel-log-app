@@ -79,13 +79,13 @@ const resolvers = {
         { new: true }
       );
     },
-    updateLocation: async (parent, args) => {
+    updateLocation: async (parent, { locationId, locationText, locationAuthor, geolocation, imageURL }) => {
       return await Location.findOneAndUpdate(
-        {_id: args.id},
-        {locationText: args.locationText},
-        {locationAuthor: args.locationAuthor},
-        {geolocation: args.geolocation},
-        {imageURL: args.imageURL},
+        {_id: locationId},
+        {locationText: locationText},
+        {locationAuthor: locationAuthor},
+        {geolocation: geolocation},
+        {imageURL: imageURL},
         {new: true}
       )
 

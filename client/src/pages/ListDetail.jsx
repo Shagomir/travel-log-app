@@ -19,6 +19,10 @@ const ListDetail = () => {
   const location = data?.location || {};
   const ideas = location.ideas || [];
 
+  const handleEdit = async () => {
+    window.location.assign(`/edit/${id}`);
+  };
+
   //   redirect to confirm page if user deletes the location
   const handleDelete = async () => {
     window.location.assign(`/delete/${id}`);
@@ -34,7 +38,9 @@ const ListDetail = () => {
           {location.imageURL && (
             <img src={location.imageURL} alt="Location Image" />
           )}
-
+          <Button className="location-edit" onClick={handleEdit}>
+            Edit Location
+          </Button>
           <Button className="location-delete" onClick={handleDelete}>
             Delete Location
           </Button>
