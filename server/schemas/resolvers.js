@@ -47,8 +47,16 @@ const resolvers = {
 
       return { token, user };
     },
-    addLocation: async (parent, { locationText, locationAuthor, geolocation, imageURL }) => {
-      const location = await Location.create({ locationText, locationAuthor, geolocation, imageURL });
+    addLocation: async (
+      parent,
+      { locationText, locationAuthor, geolocation, imageURL }
+    ) => {
+      const location = await Location.create({
+        locationText,
+        locationAuthor,
+        geolocation,
+        imageURL,
+      });
 
       await User.findOneAndUpdate(
         { username: locationAuthor },
@@ -79,17 +87,21 @@ const resolvers = {
         { new: true }
       );
     },
-    updateLocation: async (parent, { locationId, locationText, locationAuthor, geolocation, imageURL }) => {
+    updateLocation: async (
+      parent,
+      { locationId, locationText, locationAuthor, geolocation, imageURL }
+    ) => {
       return await Location.findOneAndUpdate(
-        {_id: locationId},
-        {locationText: locationText},
-        {locationAuthor: locationAuthor},
-        {geolocation: geolocation},
-        {imageURL: imageURL},
-        {new: true}
-      )
-
-    }
+        { _id: locationId },
+        {
+          locationText: locationText,
+          locationAuthor: locationAuthor,
+          geolocation: geolocation,
+          imageURL: imageURL,
+        },
+        { new: true }
+      );
+    },
   },
 };
 
