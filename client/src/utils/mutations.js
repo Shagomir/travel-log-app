@@ -25,7 +25,7 @@ export const ADD_USER = gql`
 // pass in the locationText and locationAuthor as arguments to the addLocation mutation
 export const ADD_LOCATION = gql`
   mutation addLocation($locationText: String!, $locationAuthor: String!, $geolocation: String, $imageURL: String) {
-    addLocation(locationText: $locationText, locationAuthor: $locationAuthor, $geolocation: geolocation, $imageURL: imageURL) {
+    addLocation(locationText: $locationText, locationAuthor: $locationAuthor, geolocation: $geolocation, imageURL: $imageURL) {
       _id
       locationText
       locationAuthor
