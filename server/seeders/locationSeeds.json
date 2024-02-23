@@ -3,6 +3,7 @@
     "locationText": "Grand Canyon",
     "locationAuthor": "Shagomir",
     "geolocation": "36.2679° N, 112.3535° W",
+    "imageURL": "https://www.wildnatureimages.com/images/xl/130510-022-Yavapai-Point-at-sunset.webp",
     "ideas": [
       {
         "ideaText": "Hike the Grand Canyon",
@@ -21,6 +22,7 @@
   {
     "locationText": "Everglades, FL",
     "locationAuthor": "Shagomir",
-    "geolocation": "36.2679° N, 112.3535° W"
+    "geolocation": "36.2679° N, 112.3535° W",
+    "imageURL": "https://www.nps.gov/common/uploads/stories/images/nri/20161129/articles/EED6A425-1DD8-B71B-0BF8783D2C1A6F9D/EED6A425-1DD8-B71B-0BF8783D2C1A6F9D.jpg"
   }
 ]

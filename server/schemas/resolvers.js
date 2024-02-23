@@ -79,6 +79,17 @@ const resolvers = {
         { new: true }
       );
     },
+    updateLocation: async (parent, args) => {
+      return await Location.findOneAndUpdate(
+        {_id: args.id},
+        {locationText: args.locationText},
+        {locationAuthor: args.locationAuthor},
+        {geolocation: args.geolocation},
+        {imageURL: args.imageURL},
+        {new: true}
+      )
+
+    }
   },
 };
 

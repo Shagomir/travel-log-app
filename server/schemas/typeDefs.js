@@ -44,6 +44,7 @@ const typeDefs = `
     addIdea(locationId: ID!, ideaText: String! ideaAuthor: String): Location
     removeLocation(locationId: ID!): Location
     removeIdea(locationId: ID!, ideaId: ID!): Location
+    updateLocation(locationId: ID!, locationText: String, locationAuthor: String, geolocation: String, imageURL: String): Location
   }
 `;
 
