@@ -1,5 +1,6 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import { Box } from '@chakra-ui/react';
 
 function Nav() {
   function showNavigation() {

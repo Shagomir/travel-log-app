@@ -3,6 +3,20 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  Flex,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Heading,
+  Input,
+} from '@chakra-ui/react';
 
 function Login(props) {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -33,41 +47,44 @@ function Login(props) {
 
   //   The login form will allow users to log in to the application.
   return (
-    <div className="container my-1">
-      <Link to="/signup">← Go to Signup</Link>
-
-      <h2>Login</h2>
-      <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="email">Email address:</label>
-          <input
-            placeholder="youremail@test.com"
-            name="email"
-            type="email"
-            id="email"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="pwd">Password:</label>
-          <input
-            placeholder="******"
-            name="password"
-            type="password"
-            id="pwd"
-            onChange={handleChange}
-          />
-        </div>
-        {error ? (
-          <div>
-            <p className="error-text">The provided credentials are incorrect</p>
-          </div>
-        ) : null}
-        <div className="flex-row flex-end">
-          <button type="submit">Submit</button>
-        </div>
-      </form>
-    </div>
+    <Box display="flex" alignItems="center">
+      <Card>
+        <CardBody>
+          <Heading size="md" mb="2">Login</Heading>
+          <form onSubmit={handleFormSubmit}>
+            <FormControl>
+              <FormLabel htmlFor="email">Email address</FormLabel>
+              <Input
+                placeholder="youremail@test.com"
+                name="email"
+                type="email"
+                id="email"
+                onChange={handleChange}
+              />
+            </FormControl>
+            <FormControl>
+              <FormLabel htmlFor="pwd">Password:</FormLabel>
+              <Input
+                placeholder="******"
+                name="password"
+                type="password"
+                id="pwd"
+                onChange={handleChange}
+              />
+            </FormControl>
+            {error ? (
+              <div>
+                <p className="error-text">The provided credentials are incorrect</p>
+              </div>
+            ) : null}
+            <div>
+              <Button mt={2} mb={2} type="submit">Submit</Button>
+            </div>
+            <Link to="/signup">← Go to Signup</Link>
+          </form>
+        </CardBody>
+      </Card>
+    </Box>
   );
 }
 
