@@ -21,6 +21,8 @@ export const QUERY_Locations = gql`
       _id
       locationText
       locationAuthor
+      geolocation
+      imageURL
       createdAt
     }
   }
@@ -33,6 +35,8 @@ export const QUERY_SINGLE_LOCATION = gql`
       _id
       locationText
       locationAuthor
+      geolocation
+      imageURL
       createdAt
       ideas {
         _id
@@ -55,6 +59,8 @@ export const QUERY_ME = gql`
         _id
         locationText
         locationAuthor
+        geolocation
+        imageURL
         createdAt
       }
     }

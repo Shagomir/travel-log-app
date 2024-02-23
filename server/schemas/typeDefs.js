@@ -11,6 +11,8 @@ const typeDefs = `
     _id: ID
     locationText: String
     locationAuthor: String
+    geolocation: String
+    imageURL: String
     createdAt: String
     ideas: [Idea]!
   }
