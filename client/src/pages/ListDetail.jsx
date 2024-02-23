@@ -5,7 +5,7 @@ import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 import Auth from "../utils/auth";
 import IdeaForm from "../components/IdeaForm";
 import Idea from "../components/Idea";
-import { Button } from '@chakra-ui/react';
+import { Button } from "@chakra-ui/react";
 
 const ListDetail = () => {
   const { id } = useParams();
@@ -30,6 +30,11 @@ const ListDetail = () => {
       <>
         <div>
           <h4>{location.locationText}</h4>
+          <p>{location.geolocation}</p>
+          {location.imageURL && (
+            <img src={location.imageURL} alt="Location Image" />
+          )}
+
           <Button className="location-delete" onClick={handleDelete}>
             Delete Location
           </Button>

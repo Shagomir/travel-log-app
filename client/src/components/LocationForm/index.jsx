@@ -28,6 +28,8 @@ function Locationform({ user }) {
         variables: {
           locationText: formState.newLocation,
           locationAuthor: user.username,
+          geolocation: formState.geolocation,
+          imageURL: formState.imageURL,
         },
       });
       console.log(data);
@@ -61,6 +63,26 @@ function Locationform({ user }) {
               name="newLocation"
               type="newLocation"
               id="newLocation"
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl className="flex-row space-between my-2">
+            <FormLabel htmlFor="geolocation">Enter New Location:</FormLabel>
+            <Input
+              placeholder="44° 35′ 47″ N, 110° 32′ 50″ W"
+              name="geolocation"
+              type="geolocation"
+              id="geolocation"
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl className="flex-row space-between my-2">
+            <FormLabel htmlFor="location">Enter New Location:</FormLabel>
+            <Input
+              placeholder="https://imagelocation.com"
+              name="imageURL"
+              type="imageURL"
+              id="imageURL"
               onChange={handleChange}
             />
           </FormControl>
