@@ -32,7 +32,7 @@ const EditForm = ({ location }) => {
       if (formState.imageURL === "") {
         newLocation.imageURL = location.imageURL;
       }
-      console.log("new location:", newLocation);
+      //   console.log("new location:", newLocation);
       // add location to database
       const { data } = await updateLocation({
         variables: {
@@ -43,12 +43,13 @@ const EditForm = ({ location }) => {
           imageURL: newLocation.imageURL,
         },
       });
-      console.log("returned data:", data);
+      //   console.log("returned data:", data);
 
       // Clear form value
     } catch (error) {
       console.error(error);
     }
+    window.location.assign(`/location/${location._id}`);
   };
 
   const handleChange = (event) => {
@@ -57,7 +58,7 @@ const EditForm = ({ location }) => {
       ...formState,
       [name]: value,
     });
-    console.log(name, value);
+    // console.log(name, value);
   };
 
   return (
