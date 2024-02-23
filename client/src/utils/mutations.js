@@ -24,8 +24,18 @@ export const ADD_USER = gql`
 `;
 // pass in the locationText and locationAuthor as arguments to the addLocation mutation
 export const ADD_LOCATION = gql`
-  mutation addLocation($locationText: String!, $locationAuthor: String!, $geolocation: String, $imageURL: String) {
-    addLocation(locationText: $locationText, locationAuthor: $locationAuthor, geolocation: $geolocation, imageURL: $imageURL) {
+  mutation addLocation(
+    $locationText: String!
+    $locationAuthor: String!
+    $geolocation: String
+    $imageURL: String
+  ) {
+    addLocation(
+      locationText: $locationText
+      locationAuthor: $locationAuthor
+      geolocation: $geolocation
+      imageURL: $imageURL
+    ) {
       _id
       locationText
       locationAuthor
@@ -79,14 +89,26 @@ export const REMOVE_LOCATION = gql`
   }
 `;
 export const UPDATE_LOCATION = gql`
-  mucation updateLocation($locationId: ID!){
-    updateLocation()
-    (locationId: $locationId) {
+  mutation updateLocation(
+    $locationId: ID!
+    $locationText: String
+    $locationAuthor: String
+    $geolocation: String
+    $imageURL: String
+  ) {
+    updateLocation(
+      locationId: $locationId
+      locationText: $locationText
+      locationAuthor: $locationAuthor
+      geolocation: $geolocation
+      imageURL: $imageURL
+    ) {
       _id
       locationText
       locationAuthor
       geolocation
       imageURL
+    }
   }
 `;
 
@@ -107,6 +129,5 @@ export const REMOVE_IDEA = gql`
     }
   }
 `;
-
 
 //path: client/src/utils/mutations.js
