@@ -14,7 +14,7 @@ import {
   FormHelperText,
   Heading,
   Input,
-} from '@chakra-ui/react'
+} from "@chakra-ui/react";
 
 function Locationform({ user }) {
   const [formState, setFormState] = useState({ newLocation: "" });
@@ -54,7 +54,9 @@ function Locationform({ user }) {
   return (
     <Card mt="4">
       <CardBody>
-        <Heading size="md" mt="2" mb="2">Add a Location</Heading>
+        <Heading size="md" mt="2" mb="2">
+          Add a Location
+        </Heading>
         <form onSubmit={handleFormSubmit}>
           <FormControl className="flex-row space-between my-2">
             <FormLabel htmlFor="location">Enter New Location:</FormLabel>
@@ -67,7 +69,7 @@ function Locationform({ user }) {
             />
           </FormControl>
           <FormControl className="flex-row space-between my-2">
-            <FormLabel htmlFor="geolocation">Enter New Location:</FormLabel>
+            <FormLabel htmlFor="geolocation">Enter Geolocation:</FormLabel>
             <Input
               placeholder="44° 35′ 47″ N, 110° 32′ 50″ W"
               name="geolocation"
@@ -77,7 +79,7 @@ function Locationform({ user }) {
             />
           </FormControl>
           <FormControl className="flex-row space-between my-2">
-            <FormLabel htmlFor="location">Enter New Location:</FormLabel>
+            <FormLabel htmlFor="location">Enter Image URL:</FormLabel>
             <Input
               placeholder="https://imagelocation.com"
               name="imageURL"
@@ -87,7 +89,9 @@ function Locationform({ user }) {
             />
           </FormControl>
           <div className="flex-row flex-end">
-            <Button type="submit" mt="2" mb="2">Add Location</Button>
+            <Button type="submit" mt="2" mb="2">
+              Add Location
+            </Button>
           </div>
         </form>
         {error && <div>Something went wrong...</div>}
