@@ -47,7 +47,7 @@ const resolvers = {
 
       return { token, user };
     },
-    addLocation: async (parent, { locationText, locationAuthor }) => {
+    addLocation: async (parent, { locationText, locationAuthor, geolocation, imageURL }) => {
       const location = await Location.create({ locationText, locationAuthor, geolocation, imageURL });
 
       await User.findOneAndUpdate(
