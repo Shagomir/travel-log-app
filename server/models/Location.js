@@ -14,6 +14,12 @@ const locationSchema = new Schema({
     required: true,
     trim: true,
   },
+  geolocation: {
+    type: String
+  },
+  imageURL: {
+    type: String
+  },
   createdAt: {
     type: Date,
     default: Date.now,
