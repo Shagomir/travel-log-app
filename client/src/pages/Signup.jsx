@@ -48,7 +48,8 @@ function Signup(props) {
   return (
     <AbsoluteCenter>
       <Card>
-        <CardBody onSubmit={handleFormSubmit}>
+        <form  onSubmit={handleFormSubmit}>
+        <CardBody>
           <Heading size="md" mb="2">Sign Up</Heading>
           <FormControl>
             <FormLabel htmlFor="username">User Name:</FormLabel>
@@ -85,6 +86,7 @@ function Signup(props) {
           </div>
           <Link to="/login">← Go to Login</Link>
         </CardBody>
+        </form>
       </Card>
     </AbsoluteCenter>
   );
