@@ -1,8 +1,7 @@
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { ChakraProvider } from "@chakra-ui/react";
-import { extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
 import App from "./App.jsx";
 import Home from "./pages/Home";
@@ -14,15 +13,20 @@ import List from "./pages/List";
 import Confirm from "./pages/Confirm";
 import Edit from "./pages/Edit";
 
+// extending theme
 const colors = {
   brand: {
     900: "",
     800: "",
     700: "",
-  },
+  }
 };
 
-const theme = extendTheme({ colors });
+const fonts = {
+  heading: `'Prompt', sans-serif`,
+};
+
+const theme = extendTheme ({ colors, fonts });
 
 const router = createBrowserRouter([
   {
