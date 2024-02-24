@@ -1,49 +1,68 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { Box } from '@chakra-ui/react';
+import {
+  Heading,
+  Flex,
+  Box,
+  Button,
+  IconButton,
+  Text,
+} from '@chakra-ui/react';
 
 function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/location">My Locations</Link>
-          </li>
-          <li className="mx-1">
-            {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
-              Logout
-            </a>
-          </li>
-        </ul>
+        <Flex>
+          <Flex position="fixed" top="1rem" right="1rem" align="center">
+            <Flex
+              display={["none", "none", "flex", "flex"]}>
+              <Link to="/location">
+                <Button variant="ghost" aria-label="Home" my={5} w="100%">
+                  My Locations
+                </Button>
+              </Link>
+              {/* Original Comment: this is not using the Link component to logout of user and then refresh the application to the start 
+              New Comment: Ask group/tutor if this logout will still function as expected as a Link */}
+              <Button onClick={() => { Auth.logout(); window.location.href = '/'; }} variant="ghost" aria-label="Home" my={5} w="100%">
+                Logout
+              </Button>
+            </Flex>
+          </Flex>
+        </Flex>
       );
     } else {
       return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/signup">Signup</Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+        <Flex>
+          <Flex position="fixed" top="1rem" right="1rem" align="center">
+            <Flex
+              display={["none", "none", "flex", "flex"]}>
+              <Link to="/signup">
+                <Button variant="ghost" aria-label="Home" my={5} w="100%">
+                  Signup
+                </Button>
+              </Link>
+              <Link to="/login">
+                <Button variant="ghost" aria-label="Home" my={5} w="100%">
+                  Login
+                </Button>
+              </Link>
+            </Flex>
+          </Flex>
+        </Flex>
       );
     }
   }
 
   return (
-    <header className="flex-row px-1">
-      <h1>
-        <Link to="/">
-          <span role="img" aria-label="home">
-            Home
-          </span>
-        </Link>
-      </h1>
-
+    <Flex position="fixed" top="1rem" left="1rem" align="center" my={5}>
+    <Heading>
+      <Link to="/">
+        Traveler
+      </Link>
       <nav>{showNavigation()}</nav>
-    </header>
+    </Heading>
+    </Flex>
   );
 }
 
