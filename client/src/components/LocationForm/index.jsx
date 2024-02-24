@@ -54,9 +54,6 @@ function Locationform({ user }) {
   return (
     <Card mt="4">
       <CardBody>
-        <Heading size="md" mt="2" mb="2">
-          Add a Location
-        </Heading>
         <form onSubmit={handleFormSubmit}>
           <FormControl className="flex-row space-between my-2">
             <FormLabel htmlFor="location">Enter New Location:</FormLabel>
