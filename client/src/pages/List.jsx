@@ -2,8 +2,20 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USER, QUERY_ME_BASIC } from "../utils/queries";
 import Locationform from "../components/LocationForm";
+import {
+  useDisclosure,
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from '@chakra-ui/react';
 
 function location() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { data } = useQuery(QUERY_ME);
   // console.log(data);
   let user;
@@ -26,7 +38,23 @@ function location() {
     return (
       <div className="container my-1">
         <h4>Welcome, {user.username}! You have no locations yet!</h4>
+        <Button onClick={onOpen}>Add Location</Button>
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader borderBottomWidth='1px'>
+            Add a Location
+          </DrawerHeader>
+      <div>
         <Locationform user={user} />
+      </div>
+      </DrawerContent>
+      </Drawer>
       </div>
     );
   }
@@ -49,9 +77,23 @@ function location() {
           </>
         ) : null}
       </div>
-      <div className="container my-1">
+      <Button onClick={onOpen}>Add Location</Button>
+      <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader borderBottomWidth='1px'>
+            Add a Location
+          </DrawerHeader>
+      <div>
         <Locationform user={user} />
       </div>
+      </DrawerContent>
+      </Drawer>
     </>
   );
 }
