@@ -5,9 +5,20 @@ import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 import Auth from "../utils/auth";
 import IdeaForm from "../components/IdeaForm";
 import Idea from "../components/Idea";
-import { Button } from "@chakra-ui/react";
+import {
+  useDisclosure,
+  Button,
+  Drawer,
+  DrawerBody,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerOverlay,
+  DrawerContent,
+  DrawerCloseButton,
+} from '@chakra-ui/react';
 
 const ListDetail = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const { id } = useParams();
   console.log(id);
   //   The useQuery hook allows us to make a query request to the server, and it automatically fetches the data and loading state for us.
@@ -61,8 +72,23 @@ const ListDetail = () => {
           </ul>
         </div>
         <div>
-          <h4>Add an Idea</h4>
-          <IdeaForm locationId={location._id} user={location.locationAuthor} />
+        <Button onClick={onOpen}>Add an Idea</Button>
+        <Drawer
+        isOpen={isOpen}
+        placement='right'
+        onClose={onClose}
+      >
+        <DrawerOverlay />
+        <DrawerContent>
+          <DrawerCloseButton />
+          <DrawerHeader borderBottomWidth='1px'>
+            Add an Idea
+          </DrawerHeader>
+      <div>
+      <IdeaForm locationId={location._id} user={location.locationAuthor} />
+      </div>
+      </DrawerContent>
+      </Drawer>
         </div>
       </>
     );
