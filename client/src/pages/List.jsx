@@ -5,6 +5,8 @@ import Locationform from "../components/LocationForm";
 import {
   useDisclosure,
   Button,
+  Card,
+  CardBody,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -12,6 +14,10 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Heading,
+  Text,
+  AbsoluteCenter,
+  Center,
 } from '@chakra-ui/react';
 
 function location() {
@@ -24,7 +30,7 @@ function location() {
     user = data.me;
   }
   // console.log(user);
-    // if user is not logged in, redirect to login page.
+  // if user is not logged in, redirect to login page.
   if (!user) {
     return (
       <h4>
@@ -33,39 +39,64 @@ function location() {
       </h4>
     );
   }
-    // if user has no locations, display message to create some
+  // if user has no locations, display message to create some
   if (!user.locations.length) {
     return (
       <div className="container my-1">
-        <h4>Welcome, {user.username}! You have no locations yet!</h4>
+        <Center>
+        <Card
+          direction={{ base: 'column', s: 'row' }}
+          align='center'
+          overflow='hidden'
+          variant='outline'>
+          <CardBody>
+            <Heading size="md">
+              Welcome, {user.username}! You have no locations yet!
+            </Heading>
+          </CardBody>
+        </Card>
+        </Center>
         <Button onClick={onOpen}>Add Location</Button>
-      <Drawer
-        isOpen={isOpen}
-        placement='right'
-        onClose={onClose}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth='1px'>
-            Add a Location
-          </DrawerHeader>
-      <div>
-        <Locationform user={user} />
-      </div>
-      </DrawerContent>
-      </Drawer>
+        <Drawer
+          isOpen={isOpen}
+          placement='right'
+          onClose={onClose}
+        >
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader borderBottomWidth='1px'>
+              Add a Location
+            </DrawerHeader>
+            <div>
+              <Locationform user={user} />
+            </div>
+          </DrawerContent>
+        </Drawer>
       </div>
     );
   }
-// if user is logged in and has locations, display them
+  // if user is logged in and has locations, display them
   return (
     <>
+      <Card
+        direction={{ base: 'column', s: 'row' }}
+        align='center'
+        overflow='hidden'
+        variant='outline'>
+        <CardBody>
+          <Heading size="md">
+            Welcome, {user.username}! Here are your existing locations!
+          </Heading>
+          <Text>
+            Click on a location to edit it.
+          </Text>
+        </CardBody>
+      </Card>
       <div className="container my-1">
         {user ? (
           <>
-            <h4>Welcome, {user.username}! Here are your existing locations!</h4>
-            <p>Click on a location to edit it.</p>
+          {/* Trying to add a card grid here that takes in new submissions, not sure how */}
             {/* // map over locations and display them */}
             {user.locations.map((location) => (
               <div key={location._id} className="my-2">
@@ -89,10 +120,10 @@ function location() {
           <DrawerHeader borderBottomWidth='1px'>
             Add a Location
           </DrawerHeader>
-      <div>
-        <Locationform user={user} />
-      </div>
-      </DrawerContent>
+          <div>
+            <Locationform user={user} />
+          </div>
+        </DrawerContent>
       </Drawer>
     </>
   );
