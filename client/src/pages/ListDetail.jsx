@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_SINGLE_LOCATION } from "../utils/queries";
@@ -19,11 +19,13 @@ import {
 import EditForm from "../components/EditForm";
 
 const ListDetail = () => {
-  const { isOpenEdit, onOpenEdit, onCloseEdit } = useDisclosure();
-  const { isOpenAddIdea, onOpenAddIdea, onCloseAddIdea } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isEdit, setIsEdit] = useState(false);
 
+  // const { isOpenAddIdea, onOpenAddIdea, onCloseAddIdea } = useDisclosure();
+  // let isEdit = false;
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   //   The useQuery hook allows us to make a query request to the server, and it automatically fetches the data and loading state for us.
   const { loading, error, data } = useQuery(QUERY_SINGLE_LOCATION, {
     variables: { locationId: id },
@@ -33,8 +35,12 @@ const ListDetail = () => {
   const location = data?.location || {};
   const ideas = location.ideas || [];
 
-  const handleEdit = async () => {
-    window.location.assign(`/edit/${id}`);
+  const EditButton = () => {
+    setIsEdit(true);
+  };
+
+  const AddIdeaButton = () => {
+    setIsEdit(false);
   };
 
   //   redirect to confirm page if user deletes the location
@@ -52,28 +58,29 @@ const ListDetail = () => {
           {location.imageURL && (
             <img src={location.imageURL} alt="Location Image" />
           )}
-          <Button className="location-edit" onClick={() => { handleEdit(); onOpenEdit(); }}>
+          <Button
+            className="location-edit"
+            onMouseEnter={EditButton}
+            onClick={onOpen}
+          >
             Edit Location
           </Button>
-          <Drawer
-            isOpen={isOpenEdit || isOpenAddIdea}
-            placement='right'
-            onClose={() => {
-              if (isOpenEdit) {
-                onCloseEdit();
-              } else if (isOpenAddIdea) {
-                onCloseAddIdea();
-              }
-            }}
-          >
+          <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
             <DrawerOverlay />
             <DrawerContent>
               <DrawerCloseButton />
-              <DrawerHeader borderBottomWidth='1px'>
-                {isOpenEdit ? 'Edit Location' : 'Add an Idea'}
+              <DrawerHeader borderBottomWidth="1px">
+                {isEdit ? "Edit Location" : "Add an Idea"}
               </DrawerHeader>
               <DrawerBody>
-                {isOpenEdit ? (<EditForm location={location} />) : (<IdeaForm locationId={location._id} user={location.locationAuthor} />)}
+                {isEdit ? (
+                  <EditForm location={location} />
+                ) : (
+                  <IdeaForm
+                    locationId={location._id}
+                    user={location.locationAuthor}
+                  />
+                )}
               </DrawerBody>
             </DrawerContent>
           </Drawer>
@@ -97,24 +104,9 @@ const ListDetail = () => {
             )}
           </ul>
         </div>
-        <Button onClick={onOpenAddIdea}>Add an Idea</Button>
-        {/* <div>
-          <Drawer isOpen={isOpenAddIdea} placement="right" onClose={onCloseAddIdea}>
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader borderBottomWidth="1px">Add an Idea</DrawerHeader>
-              <div>
-                <IdeaForm
-                  locationId={location._id}
-                  user={location.locationAuthor}
-                />
-              </div>
-            </DrawerContent>
-          </Drawer>
-        </div> */}
-
-        <EditForm location={location} />
+        <Button onMouseEnter={AddIdeaButton} onClick={onOpen}>
+          Add an Idea
+        </Button>
       </>
     );
   }
