@@ -13,7 +13,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Flex>
+        <Flex mb={10}>
           <Flex position="fixed" top="1rem" right="1rem" align="center">
             <Flex
               display={["none", "none", "flex", "flex"]}>

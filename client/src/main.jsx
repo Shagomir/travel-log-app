@@ -1,9 +1,9 @@
 import ReactDOM from "react-dom/client";
-import "./index.css";
+// import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 // ask tutor if this should be updated
-import { createBreakpoints } from "@chakra-ui/theme-tools";
+// import { createBreakpoints } from "@chakra-ui/theme-tools";
 
 import App from "./App.jsx";
 import Home from "./pages/Home";
@@ -15,12 +15,12 @@ import List from "./pages/List";
 import Confirm from "./pages/Confirm";
 import Edit from "./pages/Edit";
 
-const breakpoints = createBreakpoints({
-  sm: '48em',
-  md: '52em',
-  lg: '64em',
-  xl: '80em',
-});
+// const breakpoints = createBreakpoints({
+//   sm: '48em',
+//   md: '52em',
+//   lg: '64em',
+//   xl: '80em',
+// });
 
 // extending theme
 const colors = {
@@ -35,7 +35,7 @@ const fonts = {
   heading: `'Prompt', sans-serif`,
 };
 
-const theme = extendTheme ({ colors, fonts, breakpoints });
+const theme = extendTheme ({ colors, fonts });
 
 const router = createBrowserRouter([
   {
