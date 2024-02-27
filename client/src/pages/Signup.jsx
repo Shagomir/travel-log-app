@@ -14,7 +14,9 @@ import {
   FormErrorMessage,
   FormHelperText,
   Heading,
+  Image,
   Input,
+  Stack,
 } from '@chakra-ui/react';
 
 function Signup(props) {
@@ -47,48 +49,60 @@ function Signup(props) {
   //   The signup form will allow users to sign up for the application.
   return (
     <AbsoluteCenter>
-      <Card>
-        <form  onSubmit={handleFormSubmit}>
-        <CardBody>
-          <Heading size="md" mb="2">Sign Up</Heading>
-          <FormControl>
-            <FormLabel htmlFor="username">User Name:</FormLabel>
-            <Input
-              placeholder="User Name"
-              name="username"
-              type="username"
-              id="username"
-              onChange={handleChange}
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel mt="2" htmlFor="email">Email:</FormLabel>
-            <Input
-              placeholder="youremail@test.com"
-              name="email"
-              type="email"
-              id="email"
-              onChange={handleChange}
-            />
-          </FormControl>
-          <FormControl>
-            <FormLabel mt="2" htmlFor="pwd">Password:</FormLabel>
-            <Input
-              placeholder="******"
-              name="password"
-              type="password"
-              id="pwd"
-              onChange={handleChange}
-            />
-          </FormControl>
-          <div>
-            <Button mt="4" type="submit">Submit</Button>
-          </div>
-          <Link to="/login">← Go to Login</Link>
-        </CardBody>
-        </form>
-      </Card>
-    </AbsoluteCenter>
+      <Card
+        direction={{ base: 'column', sm: 'row' }}
+        overflow='hidden'
+        variant='outline'>
+        <Image
+          objectFit='cover'
+          maxW={{ base: '100%', sm: '250px' }}
+          src='./src/assets/hiking-logo.jpeg'
+          alt='An image of a solo hiker turned away from the viewer, they wear a loose outfit with a brimmed hat and a large hiking pack.'
+          borderRadius='lg'
+        />
+        <Stack>
+          <form onSubmit={handleFormSubmit}>
+            <CardBody>
+              <Heading size="md" mb="3">Sign Up</Heading>
+              <FormControl>
+                <FormLabel htmlFor="username">User Name:</FormLabel>
+                <Input
+                  placeholder="User Name"
+                  name="username"
+                  type="username"
+                  id="username"
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel mt="2" htmlFor="email">Email:</FormLabel>
+                <Input
+                  placeholder="youremail@test.com"
+                  name="email"
+                  type="email"
+                  id="email"
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <FormControl>
+                <FormLabel mt="2" htmlFor="pwd">Password:</FormLabel>
+                <Input
+                  placeholder="******"
+                  name="password"
+                  type="password"
+                  id="pwd"
+                  onChange={handleChange}
+                />
+              </FormControl>
+              <div>
+                <Button mt="3" mb="3" type="submit">Submit</Button>
+              </div>
+              <Link to="/login">← Go to Login</Link>
+            </CardBody>
+            </form>
+        </Stack>
+    </Card>
+    </AbsoluteCenter >
   );
 }
 

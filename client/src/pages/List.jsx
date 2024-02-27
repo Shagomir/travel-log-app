@@ -5,8 +5,11 @@ import Locationform from "../components/LocationForm";
 import {
   useDisclosure,
   Button,
+  Container,
   Card,
   CardBody,
+  CardHeader,
+  CardFooter,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -15,9 +18,11 @@ import {
   DrawerContent,
   DrawerCloseButton,
   Heading,
+  Image,
   Text,
   AbsoluteCenter,
   Center,
+  SimpleGrid,
 } from '@chakra-ui/react';
 
 function location() {
@@ -42,19 +47,19 @@ function location() {
   // if user has no locations, display message to create some
   if (!user.locations.length) {
     return (
-      <div className="container my-1">
+      <Container>
         <Center>
-        <Card
-          direction={{ base: 'column', s: 'row' }}
-          align='center'
-          overflow='hidden'
-          variant='outline'>
-          <CardBody>
-            <Heading size="md">
-              Welcome, {user.username}! You have no locations yet!
-            </Heading>
-          </CardBody>
-        </Card>
+          <Card
+            direction={{ base: 'column', s: 'row' }}
+            align='center'
+            overflow='hidden'
+            variant='outline'>
+            <CardBody>
+              <Heading size="md">
+                Welcome, {user.username}! You have no locations yet!
+              </Heading>
+            </CardBody>
+          </Card>
         </Center>
         <Button onClick={onOpen}>Add Location</Button>
         <Drawer
@@ -73,42 +78,52 @@ function location() {
             </div>
           </DrawerContent>
         </Drawer>
-      </div>
+      </Container>
     );
   }
   // if user is logged in and has locations, display them
   return (
-    <>
-      <Card
-        direction={{ base: 'column', s: 'row' }}
-        align='center'
-        overflow='hidden'
-        variant='outline'>
-        <CardBody>
-          <Heading size="md">
-            Welcome, {user.username}! Here are your existing locations!
-          </Heading>
-          <Text>
-            Click on a location to edit it.
-          </Text>
-        </CardBody>
-      </Card>
-      <div className="container my-1">
+    <Container mt={10}>
+      <SimpleGrid columns={1} spacing={10} mb={5}>
+        <Card
+          direction={{ base: 'column', s: 'row' }}
+          align='center'
+          overflow='hidden'
+          variant='outline'>
+          <CardBody>
+            <Heading size="md">
+              Welcome, {user.username}! Here are your existing locations!
+            </Heading>
+            <Text>
+              Click on a location to edit it.
+            </Text>
+          </CardBody>
+        </Card>
+      </SimpleGrid>
+      <div>
         {user ? (
           <>
-          {/* Trying to add a card grid here that takes in new submissions, not sure how */}
+            {/* Trying to add a card grid here that takes in new submissions, not sure how */}
             {/* // map over locations and display them */}
-            {user.locations.map((location) => (
-              <div key={location._id} className="my-2">
-                <Link to={`/location/${location._id}`}>
-                  {location.locationText}
-                </Link>
-              </div>
-            ))}
+            <SimpleGrid spacing={4} columns={{sm: 1, md: 3}}>
+              {user.locations.map((location) => (
+                <Card key={location._id}>
+                  <CardHeader>
+                    <Heading size='md'>{location.locationText}</Heading>
+                  </CardHeader>
+                  <CardBody>
+                    <Image src={location.imageURL}></Image>
+                  </CardBody>
+                  <CardFooter>
+                    <Button as={Link} to={`/location/${location._id}`}>View here</Button>
+                  </CardFooter>
+                </Card>
+              ))}
+            </SimpleGrid>
           </>
         ) : null}
       </div>
-      <Button onClick={onOpen}>Add Location</Button>
+      <Button mt={5} onClick={onOpen}>Add Location</Button>
       <Drawer
         isOpen={isOpen}
         placement='right'
@@ -125,7 +140,7 @@ function location() {
           </div>
         </DrawerContent>
       </Drawer>
-    </>
+    </Container>
   );
 }
 
