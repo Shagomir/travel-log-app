@@ -56,7 +56,7 @@ function Signup(props) {
         <Image
           objectFit='cover'
           maxW={{ base: '100%', sm: '250px' }}
-          src='./src/assets/hiking-logo.jpeg'
+          src='./public/hiking-logo.jpeg'
           alt='An image of a solo hiker turned away from the viewer, they wear a loose outfit with a brimmed hat and a large hiking pack.'
           borderRadius='lg'
         />
