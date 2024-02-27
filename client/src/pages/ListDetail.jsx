@@ -89,19 +89,15 @@ const ListDetail = () => {
             Delete Location
           </Button>
           <ul>
-            {ideas.map(
-              (idea) => (
-                console.log(idea),
-                (
-                  <Idea
-                    key={idea._id}
-                    locationId={id}
-                    ideaId={idea._id}
-                    ideaText={idea.ideaText}
-                  />
-                )
-              )
-            )}
+            {ideas.map((idea) => (
+              // console.log(idea),
+              <Idea
+                key={idea._id}
+                locationId={id}
+                ideaId={idea._id}
+                ideaText={idea.ideaText}
+              />
+            ))}
           </ul>
         </div>
         <Button onMouseEnter={AddIdeaButton} onClick={onOpen}>
