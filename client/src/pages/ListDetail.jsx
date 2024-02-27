@@ -15,7 +15,8 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
+import EditForm from "../components/EditForm";
 
 const ListDetail = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -72,24 +73,23 @@ const ListDetail = () => {
           </ul>
         </div>
         <div>
-        <Button onClick={onOpen}>Add an Idea</Button>
-        <Drawer
-        isOpen={isOpen}
-        placement='right'
-        onClose={onClose}
-      >
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth='1px'>
-            Add an Idea
-          </DrawerHeader>
-      <div>
-      <IdeaForm locationId={location._id} user={location.locationAuthor} />
-      </div>
-      </DrawerContent>
-      </Drawer>
+          <Button onClick={onOpen}>Add an Idea</Button>
+          <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader borderBottomWidth="1px">Add an Idea</DrawerHeader>
+              <div>
+                <IdeaForm
+                  locationId={location._id}
+                  user={location.locationAuthor}
+                />
+              </div>
+            </DrawerContent>
+          </Drawer>
         </div>
+
+        <EditForm location={location} />
       </>
     );
   }
