@@ -51,54 +51,55 @@ function Login(props) {
   //   The login form will allow users to log in to the application.
   return (
     <AbsoluteCenter>
-      <Card
-        direction={{ base: 'column', sm: 'row' }}
-        overflow='hidden'
-        variant='outline'>
-        <Image
-          objectFit='cover'
-          maxW={{ base: '100%', sm: '250px' }}
-          src='./assets/hiking-logo.jpeg'
-          alt='An image of a solo hiker turned away from the viewer, they wear a loose outfit with a brimmed hat and a large hiking pack.'
-          borderRadius='lg'
-        />
-        <Stack>
-          <CardBody>
-            <Heading size="md" mb="3">Login</Heading>
-            <form onSubmit={handleFormSubmit}>
-              <FormControl>
-                <FormLabel htmlFor="email">Email address:</FormLabel>
-                <Input
-                  placeholder="youremail@test.com"
-                  name="email"
-                  type="email"
-                  id="email"
-                  onChange={handleChange}
-                />
-              </FormControl>
-              <FormControl>
-                <FormLabel mt="2" htmlFor="pwd">Password:</FormLabel>
-                <Input
-                  placeholder="******"
-                  name="password"
-                  type="password"
-                  id="pwd"
-                  onChange={handleChange}
-                />
-              </FormControl>
-              {error ? (
+        <Card
+          boxShadow='sm' p='6' rounded='md' bg='white'
+          direction={{ base: 'column', sm: 'row' }}
+          overflow='hidden'
+          variant='outline'>
+          <Image
+            objectFit='cover'
+            maxW={{ base: '100%', sm: '250px' }}
+            src='./assets/hiking-logo.jpeg'
+            alt='An image of a solo hiker turned away from the viewer, they wear a loose outfit with a brimmed hat and a large hiking pack.'
+            borderRadius='lg'
+          />
+          <Stack>
+            <CardBody>
+              <Heading size="md" mb="3">Login</Heading>
+              <form onSubmit={handleFormSubmit}>
+                <FormControl>
+                  <FormLabel htmlFor="email">Email address:</FormLabel>
+                  <Input
+                    placeholder="youremail@test.com"
+                    name="email"
+                    type="email"
+                    id="email"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                <FormControl>
+                  <FormLabel mt="2" htmlFor="pwd">Password:</FormLabel>
+                  <Input
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    id="pwd"
+                    onChange={handleChange}
+                  />
+                </FormControl>
+                {error ? (
+                  <div>
+                    <p className="error-text">The provided credentials are incorrect</p>
+                  </div>
+                ) : null}
                 <div>
-                  <p className="error-text">The provided credentials are incorrect</p>
+                  <Button mt={3} mb={3} type="submit">Submit</Button>
                 </div>
-              ) : null}
-              <div>
-                <Button mt={3} mb={3} type="submit">Submit</Button>
-              </div>
-              <Link to="/signup">← Go to Signup</Link>
-            </form>
-          </CardBody>
-        </Stack>
-      </Card>
+                <Link to="/signup">← Go to Signup</Link>
+              </form>
+            </CardBody>
+          </Stack>
+        </Card>
     </AbsoluteCenter>
   );
 }

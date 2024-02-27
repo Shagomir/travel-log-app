@@ -50,6 +50,7 @@ function location() {
       <Container>
         <Center>
           <Card
+            boxShadow='sm' p='6' rounded='md' bg='white'
             direction={{ base: 'column', s: 'row' }}
             align='center'
             overflow='hidden'
@@ -86,6 +87,7 @@ function location() {
     <Container mt={10}>
       <SimpleGrid columns={1} spacing={10} mb={5}>
         <Card
+          boxShadow='sm' p='6' rounded='md' bg='white'
           direction={{ base: 'column', s: 'row' }}
           align='center'
           overflow='hidden'
@@ -105,7 +107,7 @@ function location() {
           <>
             {/* Trying to add a card grid here that takes in new submissions, not sure how */}
             {/* // map over locations and display them */}
-            <SimpleGrid spacing={4} columns={{sm: 1, md: 3}}>
+            <SimpleGrid spacing={4} columns={{ sm: 1, md: 3 }}>
               {user.locations.map((location) => (
                 <Card key={location._id}>
                   <CardHeader>

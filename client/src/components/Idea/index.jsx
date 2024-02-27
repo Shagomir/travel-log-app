@@ -1,6 +1,23 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 import { REMOVE_IDEA } from "../../utils/mutations";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  Flex,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Heading,
+  Input,
+  List,
+  ListItem,
+  // Divider,
+} from "@chakra-ui/react";
 
 function Idea({ locationId, ideaId, ideaText }) {
   const [deleteIdea, { error }] = useMutation(REMOVE_IDEA);
@@ -23,12 +40,18 @@ function Idea({ locationId, ideaId, ideaText }) {
 
   //   The Idea component will display the idea text and a delete button.
   return (
-    <li key={ideaId}>
+    <List key={ideaId}>
+      <Card mb={1}>
+      <ListItem >
+        {/* <Divider> */}
       {ideaText}
-      <button className="idea-delete" onClick={handleDelete}>
+      {/* </Divider> */}
+      <Button className="idea-delete" onClick={handleDelete}>
         X
-      </button>
-    </li>
+      </Button>
+      </ListItem>
+      </Card>
+    </List>
   );
 }
 export default Idea;
