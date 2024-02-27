@@ -50,6 +50,7 @@ function Signup(props) {
   return (
     <AbsoluteCenter>
       <Card
+        boxShadow='sm' p='6' rounded='md' bg='white'
         direction={{ base: 'column', sm: 'row' }}
         overflow='hidden'
         variant='outline'>
@@ -99,9 +100,9 @@ function Signup(props) {
               </div>
               <Link to="/login">← Go to Login</Link>
             </CardBody>
-            </form>
+          </form>
         </Stack>
-    </Card>
+      </Card>
     </AbsoluteCenter >
   );
 }

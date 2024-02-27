@@ -62,6 +62,7 @@ const ListDetail = () => {
             className="location-edit"
             onMouseEnter={EditButton}
             onClick={onOpen}
+            mb={5}
           >
             Edit Location
           </Button>
@@ -85,7 +86,7 @@ const ListDetail = () => {
             </DrawerContent>
           </Drawer>
 
-          <Button className="location-delete" onClick={handleDelete}>
+          <Button className="location-delete" onClick={handleDelete} mb={5}>
             Delete Location
           </Button>
           <ul>
@@ -100,7 +101,7 @@ const ListDetail = () => {
             ))}
           </ul>
         </div>
-        <Button onMouseEnter={AddIdeaButton} onClick={onOpen}>
+        <Button onMouseEnter={AddIdeaButton} onClick={onOpen} mt={4}>
           Add an Idea
         </Button>
       </>

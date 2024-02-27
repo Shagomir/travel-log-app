@@ -69,7 +69,7 @@ const IdeaForm = ({ locationId, user }) => {
               />
             </FormControl>
             <Button type="submit" mt="2" mb="2">
-              Add Location
+              Add New Idea
             </Button>
               {/* <div className="flex-row flex-end">
                 <button type="submit">Add Idea</button>
