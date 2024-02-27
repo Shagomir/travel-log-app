@@ -33,7 +33,7 @@ const IdeaForm = ({ locationId, user }) => {
           ideaAuthor: user,
         },
       });
-      console.log(data);
+      console.log(data);https://github.com/Shagomir/travel-log-app/compare/image-bug
       // Clear form value
       setFormState({ newLocation: "" });
     } catch (e) {
