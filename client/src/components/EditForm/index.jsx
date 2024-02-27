@@ -2,6 +2,21 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { UPDATE_LOCATION } from "../../utils/mutations";
+import {
+  AbsoluteCenter,
+  Button,
+  ButtonGroup,
+  Card,
+  CardBody,
+  FormControl,
+  FormLabel,
+  FormErrorMessage,
+  FormHelperText,
+  Heading,
+  Image,
+  Input,
+  Stack,
+} from '@chakra-ui/react';
 
 const EditForm = ({ location }) => {
   //   console.log("passed location", location);
@@ -62,43 +77,43 @@ const EditForm = ({ location }) => {
   };
 
   return (
-    <div>
-      <h4>Edit Location</h4>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            name="locationText"
-            defaultValue={location.locationText}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-
-        <label>
-          Geolocation:
-          <input
-            type="text"
-            name="geolocation"
-            defaultValue={location.geolocation}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <label>
-          Image URL:
-          <input
-            type="text"
-            name="imageURL"
-            defaultValue={location.imageURL}
-            onChange={handleChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Save</button>
-      </form>
-    </div>
+    <Card mt="4">
+      <CardBody>
+          <form onSubmit={handleSubmit}>
+          <FormControl className="flex-row space-between my-2">
+            <FormLabel htmlFor="idea">Name:</FormLabel>
+            <Input
+              type="text"
+              name="locationText"
+              defaultValue={location.locationText}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl className="flex-row space-between my-2">
+            <FormLabel htmlFor="idea">Geolocation:</FormLabel>
+            <Input
+              type="text"
+              name="geolocation"
+              defaultValue={location.geolocation}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <FormControl className="flex-row space-between my-2">
+            <FormLabel htmlFor="idea">Image URL:</FormLabel>
+            <Input
+              type="text"
+              name="imageURL"
+              defaultValue={location.imageURL}
+              onChange={handleChange}
+            />
+          </FormControl>
+          <Button type="submit" mt="2" mb="2">
+            Save
+          </Button>
+        </form>
+        {error && <div>Something went wrong...</div>}
+      </CardBody>
+    </Card >
   );
 };
 

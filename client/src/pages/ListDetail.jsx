@@ -19,7 +19,9 @@ import {
 import EditForm from "../components/EditForm";
 
 const ListDetail = () => {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpenEdit, onOpenEdit, onCloseEdit } = useDisclosure();
+  const { isOpenAddIdea, onOpenAddIdea, onCloseAddIdea } = useDisclosure();
+
   const { id } = useParams();
   console.log(id);
   //   The useQuery hook allows us to make a query request to the server, and it automatically fetches the data and loading state for us.
@@ -50,9 +52,32 @@ const ListDetail = () => {
           {location.imageURL && (
             <img src={location.imageURL} alt="Location Image" />
           )}
-          <Button className="location-edit" onClick={handleEdit}>
+          <Button className="location-edit" onClick={() => { handleEdit(); onOpenEdit(); }}>
             Edit Location
           </Button>
+          <Drawer
+            isOpen={isOpenEdit || isOpenAddIdea}
+            placement='right'
+            onClose={() => {
+              if (isOpenEdit) {
+                onCloseEdit();
+              } else if (isOpenAddIdea) {
+                onCloseAddIdea();
+              }
+            }}
+          >
+            <DrawerOverlay />
+            <DrawerContent>
+              <DrawerCloseButton />
+              <DrawerHeader borderBottomWidth='1px'>
+                {isOpenEdit ? 'Edit Location' : 'Add an Idea'}
+              </DrawerHeader>
+              <DrawerBody>
+                {isOpenEdit ? (<EditForm location={location} />) : (<IdeaForm locationId={location._id} user={location.locationAuthor} />)}
+              </DrawerBody>
+            </DrawerContent>
+          </Drawer>
+
           <Button className="location-delete" onClick={handleDelete}>
             Delete Location
           </Button>
@@ -72,9 +97,9 @@ const ListDetail = () => {
             )}
           </ul>
         </div>
-        <div>
-          <Button onClick={onOpen}>Add an Idea</Button>
-          <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+        <Button onClick={onOpenAddIdea}>Add an Idea</Button>
+        {/* <div>
+          <Drawer isOpen={isOpenAddIdea} placement="right" onClose={onCloseAddIdea}>
             <DrawerOverlay />
             <DrawerContent>
               <DrawerCloseButton />
@@ -87,7 +112,7 @@ const ListDetail = () => {
               </div>
             </DrawerContent>
           </Drawer>
-        </div>
+        </div> */}
 
         <EditForm location={location} />
       </>
