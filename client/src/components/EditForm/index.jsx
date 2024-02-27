@@ -16,7 +16,7 @@ import {
   Image,
   Input,
   Stack,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 const EditForm = ({ location }) => {
   //   console.log("passed location", location);
@@ -33,21 +33,24 @@ const EditForm = ({ location }) => {
 
     try {
       const newLocation = {
-        locationText: formState.newLocation,
+        locationText: formState.locationText,
         locationAuthor: location.locationAuthor,
         geolocation: formState.geolocation,
         imageURL: formState.imageURL,
       };
-      if (formState.newLocation === "") {
+      if (formState.locationText === "") {
         newLocation.locationText = location.locationText;
+        // console.log("LOCATION NULL");
       }
       if (formState.geolocation === "") {
         newLocation.geolocation = location.geolocation;
+        // console.log("GEOLOCATION NULL");
       }
       if (formState.imageURL === "") {
         newLocation.imageURL = location.imageURL;
+        // console.log("IMAGE NULL");
       }
-      //   console.log("new location:", newLocation);
+      console.log("new location:", newLocation);
       // add location to database
       const { data } = await updateLocation({
         variables: {
@@ -79,7 +82,7 @@ const EditForm = ({ location }) => {
   return (
     <Card mt="4">
       <CardBody>
-          <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <FormControl className="flex-row space-between my-2">
             <FormLabel htmlFor="idea">Name:</FormLabel>
             <Input
@@ -113,7 +116,7 @@ const EditForm = ({ location }) => {
         </form>
         {error && <div>Something went wrong...</div>}
       </CardBody>
-    </Card >
+    </Card>
   );
 };
 
