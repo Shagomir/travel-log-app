@@ -24,20 +24,12 @@ const LogoImage = "./assets/traveler-logo.png";
 //   xl: '80em',
 // });
 
-// extending theme
-const colors = {
-  brand: {
-    900: "",
-    800: "",
-    700: "",
-  },
-};
-
 const fonts = {
   heading: `'Prompt', sans-serif`,
 };
 
-const theme = extendTheme({ colors, fonts });
+// extending theme
+const theme = extendTheme({ fonts });
 
 const router = createBrowserRouter([
   {

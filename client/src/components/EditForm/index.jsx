@@ -92,7 +92,7 @@ const EditForm = ({ location }) => {
               onChange={handleChange}
             />
           </FormControl>
-          <FormControl className="flex-row space-between my-2">
+          <FormControl mt="2" className="flex-row space-between my-2">
             <FormLabel htmlFor="idea">Geolocation:</FormLabel>
             <Input
               type="text"
@@ -110,7 +110,12 @@ const EditForm = ({ location }) => {
               onChange={handleChange}
             />
           </FormControl>
-          <Button type="submit" mt="2" mb="2">
+          <Button
+          type="submit"
+          mt="4"
+          mb="2"
+          colorScheme='green'
+          variant='outline'>
             Save
           </Button>
         </form>

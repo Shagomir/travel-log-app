@@ -4,6 +4,7 @@ import { QUERY_ME, QUERY_USER, QUERY_ME_BASIC } from "../utils/queries";
 import Locationform from "../components/LocationForm";
 import LoginReminder from "../components/LoginReminder";
 import React from "react";
+import theme from "../theme.js";
 import {
   useDisclosure,
   Button,
@@ -31,6 +32,7 @@ import {
 function location() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const { data } = useQuery(QUERY_ME);
+  const boxShadow = `${theme.shadows.xl}, ${theme.shadows.green}`;
   // console.log(data);
   let user;
 
@@ -53,7 +55,7 @@ function location() {
         <Container mt={10} my="auto">
           <Center>
             <Card
-              boxShadow="sm"
+              boxShadow={boxShadow}
               p="6"
               rounded="md"
               bg="white"
@@ -69,7 +71,10 @@ function location() {
               </CardBody>
             </Card>
           </Center>
-          <Button mt={10} onClick={onOpen}>
+          <Button mt={10}
+          onClick={onOpen}
+          colorScheme='green'
+          variant='outline'>
             Add Location
           </Button>
           <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
@@ -94,7 +99,7 @@ function location() {
       <Container mt={10} my="auto">
         <SimpleGrid columns={1} spacing={10} mb={5}>
           <Card
-            boxShadow="sm"
+            boxShadow={boxShadow}
             p="6"
             rounded="md"
             bg="white"
@@ -118,7 +123,9 @@ function location() {
               {/* // map over locations and display them */}
               <SimpleGrid spacing={4} columns={{ sm: 1, md: 3 }}>
                 {user.locations.map((location) => (
-                  <Card key={location._id}>
+                  <Card 
+                  boxShadow={boxShadow}
+                  key={location._id}>
                     <CardHeader>
                       <Heading size="md">{location.locationText}</Heading>
                     </CardHeader>
@@ -130,6 +137,8 @@ function location() {
                         mx="auto"
                         as={Link}
                         to={`/location/${location._id}`}
+                        colorScheme='green'
+                        variant='outline'
                       >
                         View here
                       </Button>
@@ -140,7 +149,11 @@ function location() {
             </>
           ) : null}
         </div>
-        <Button mt={5} onClick={onOpen}>
+        <Button
+        mt={10}
+        onClick={onOpen}
+        colorScheme='green'
+        variant='outline'>
           Add Location
         </Button>
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>

@@ -6,6 +6,7 @@ import Auth from "../utils/auth";
 import IdeaForm from "../components/IdeaForm";
 import Idea from "../components/Idea";
 import LoginReminder from "../components/LoginReminder";
+import theme from "../theme.js";
 import {
   useDisclosure,
   Button,
@@ -55,12 +56,14 @@ const ListDetail = () => {
     window.location.assign(`/delete/${id}`);
   };
 
+  const boxShadow = `${theme.shadows.xl}, ${theme.shadows.green}`;
+
   // if user is logged in, display the location and its ideas
   if (Auth.loggedIn()) {
     return (
       <>
         <Container mt={"150px"}>
-          <Card width="90%" margin="auto">
+          <Card p="6" boxShadow={boxShadow} width="90%" margin="auto">
             <div>
               <Heading>{location.locationText}</Heading>
               <p>{location.geolocation}</p>
@@ -78,12 +81,19 @@ const ListDetail = () => {
                 className="location-edit"
                 onMouseEnter={EditButton}
                 onClick={onOpen}
+                colorScheme='green'
+                variant='outline'
                 m={5}
               >
                 Edit Location
               </Button>
 
-              <Button className="location-delete" onClick={handleDelete} m={5}>
+              <Button
+              className="location-delete"
+              colorScheme='green'
+              variant='outline'
+              onClick={handleDelete}
+              m={5}>
                 Delete Location
               </Button>
               <ul>
@@ -98,7 +108,12 @@ const ListDetail = () => {
                 ))}
               </ul>
             </div>
-            <Button onMouseEnter={AddIdeaButton} onClick={onOpen} m={5}>
+            <Button
+            onMouseEnter={AddIdeaButton}
+            onClick={onOpen}
+            colorScheme='green'
+            variant='outline'
+            m={5}>
               Add an Idea
             </Button>
           </Card>
