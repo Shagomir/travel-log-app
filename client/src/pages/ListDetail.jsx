@@ -5,6 +5,7 @@ import { QUERY_SINGLE_LOCATION } from "../utils/queries";
 import Auth from "../utils/auth";
 import IdeaForm from "../components/IdeaForm";
 import Idea from "../components/Idea";
+import LoginReminder from "../components/LoginReminder";
 import {
   useDisclosure,
   Button,
@@ -126,12 +127,13 @@ const ListDetail = () => {
     );
   }
   // if user is not logged in, display message to log in
-  return (
-    <h4>
-      You need to be logged in to see this. Use the navigation links above to
-      sign up or log in!
-    </h4>
-  );
+  else {
+    return (
+      <>
+        <LoginReminder />
+      </>
+    );
+  }
 };
 
 export default ListDetail;

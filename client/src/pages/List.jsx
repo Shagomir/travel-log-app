@@ -2,6 +2,8 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { QUERY_ME, QUERY_USER, QUERY_ME_BASIC } from "../utils/queries";
 import Locationform from "../components/LocationForm";
+import LoginReminder from "../components/LoginReminder";
+import React from "react";
 import {
   useDisclosure,
   Button,
@@ -39,17 +41,16 @@ function location() {
   // if user is not logged in, redirect to login page.
   if (!user) {
     return (
-      <h4>
-        You need to be logged in to see this. Use the navigation links above to
-        sign up or log in!
-      </h4>
+      <>
+        <LoginReminder />
+      </>
     );
   }
   // if user has no locations, display message to create some
   if (!user.locations.length) {
     return (
-      <Flex mx="auto">
-        <Container pos="fixed">
+      <Flex mt={"150px"} width="100%" justifyContent="center">
+        <Container mt={10} my="auto">
           <Center>
             <Card
               boxShadow="sm"
@@ -68,7 +69,9 @@ function location() {
               </CardBody>
             </Card>
           </Center>
-          <Button onClick={onOpen}>Add Location</Button>
+          <Button mt={10} onClick={onOpen}>
+            Add Location
+          </Button>
           <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
             <DrawerOverlay />
             <DrawerContent>
