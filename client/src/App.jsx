@@ -6,10 +6,11 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+import { Flex, Image, Link } from "@chakra-ui/react";
 
 import Nav from "./components/Nav";
 import { PageProvider } from "./utils/GlobalState";
-import "./App.css"
+import "./App.css";
 
 const httpLink = createHttpLink({
   uri: "/graphql",
@@ -34,10 +35,21 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <PageProvider>
-        <Nav />
-        <main className="main">
-        <Outlet />
-        </main>
+        <Flex>
+          <Flex>
+            <Link position="fixed" my={0} zIndex={-2} to="/">
+              <Image
+                width="200px"
+                height="auto"
+                src="./assets/traveler-logo.png"
+              />
+            </Link>
+            <Nav />
+          </Flex>
+          <main className="main">
+            <Outlet />
+          </main>
+        </Flex>
       </PageProvider>
     </ApolloProvider>
   );

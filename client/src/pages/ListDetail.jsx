@@ -66,25 +66,6 @@ const ListDetail = () => {
           >
             Edit Location
           </Button>
-          <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
-            <DrawerOverlay />
-            <DrawerContent>
-              <DrawerCloseButton />
-              <DrawerHeader borderBottomWidth="1px">
-                {isEdit ? "Edit Location" : "Add an Idea"}
-              </DrawerHeader>
-              <DrawerBody>
-                {isEdit ? (
-                  <EditForm location={location} />
-                ) : (
-                  <IdeaForm
-                    locationId={location._id}
-                    user={location.locationAuthor}
-                  />
-                )}
-              </DrawerBody>
-            </DrawerContent>
-          </Drawer>
 
           <Button className="location-delete" onClick={handleDelete} mb={5}>
             Delete Location
@@ -104,6 +85,26 @@ const ListDetail = () => {
         <Button onMouseEnter={AddIdeaButton} onClick={onOpen} mt={4}>
           Add an Idea
         </Button>
+
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
+          <DrawerOverlay />
+          <DrawerContent>
+            <DrawerCloseButton />
+            <DrawerHeader borderBottomWidth="1px">
+              {isEdit ? "Edit Location" : "Add an Idea"}
+            </DrawerHeader>
+            <DrawerBody>
+              {isEdit ? (
+                <EditForm location={location} />
+              ) : (
+                <IdeaForm
+                  locationId={location._id}
+                  user={location.locationAuthor}
+                />
+              )}
+            </DrawerBody>
+          </DrawerContent>
+        </Drawer>
       </>
     );
   }

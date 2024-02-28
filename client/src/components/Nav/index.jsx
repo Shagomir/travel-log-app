@@ -17,7 +17,7 @@ function Nav() {
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
-        <Flex>
+        <Flex zIndex={20}>
           <Flex position="fixed" top="1rem" right="1rem" align="center">
             <Flex display={["none", "none", "flex", "flex"]}>
               <Link to="/location">
@@ -114,11 +114,15 @@ function Nav() {
   }
 
   return (
-    <Flex position="fixed" top="1rem" left="1rem" align="center" my={0}>
+    <Flex
+      position="fixed"
+      top="1rem"
+      left="1rem"
+      align="center"
+      my={0}
+      zIndex={0}
+    >
       <Heading>
-        <Link to="/">
-          <Image src="./assets/traveler-logo.png" />
-        </Link>
         <nav>{showNavigation()}</nav>
       </Heading>
     </Flex>
