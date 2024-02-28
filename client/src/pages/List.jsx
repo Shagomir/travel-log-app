@@ -101,7 +101,7 @@ function location() {
             variant="outline"
           >
             <CardBody>
-              <Heading size="md">
+              <Heading size="md" mb={10}>
                 Welcome, {user.username}! Here are your existing locations!
               </Heading>
               <Text>Click on a location to edit it.</Text>
@@ -123,7 +123,11 @@ function location() {
                       <Image src={location.imageURL} />
                     </CardBody>
                     <CardFooter>
-                      <Button as={Link} to={`/location/${location._id}`}>
+                      <Button
+                        mx="auto"
+                        as={Link}
+                        to={`/location/${location._id}`}
+                      >
                         View here
                       </Button>
                     </CardFooter>

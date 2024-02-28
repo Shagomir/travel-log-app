@@ -1,4 +1,4 @@
-import { Button, ButtonGroup, Container, Center } from '@chakra-ui/react'
+import { Button, ButtonGroup, Container, Center } from "@chakra-ui/react";
 
 const Home = () => {
   // If the user is already logged in, redirect to the location page
@@ -7,7 +7,7 @@ const Home = () => {
   }
   // If the user is not logged in, display the home page
   return (
-    <Container>
+    <Container mt={"300px"}>
       <Center>
         <Button>
           <a href="/login">Please Log In!</a>
