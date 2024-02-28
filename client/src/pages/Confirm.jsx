@@ -2,6 +2,7 @@ import React from "react";
 import { REMOVE_LOCATION } from "../utils/mutations";
 import { useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
+import theme from "../theme.js";
 import { Button, Card, Container, Flex, Heading } from "@chakra-ui/react";
 import Auth from "../utils/auth";
 import LoginReminder from "../components/LoginReminder";
@@ -29,18 +30,31 @@ const Confirm = () => {
     window.location.assign(`/location/${locationId}`);
   };
 
+  const boxShadow = `${theme.shadows.xl}, ${theme.shadows.green}`;
+
   if (Auth.loggedIn()) {
     return (
       <Container>
-        <Card mt="300px" mx={"auto"}>
+        <Card
+        boxShadow={boxShadow}
+        mt="200px"
+        mx={"auto"}>
           <Heading mt={10}>
             This will delete the location and all of its ideas! Are you sure?
           </Heading>
           <Flex justifyContent="space-between" m={10}>
-            <Button className="location-delete" onClick={handleCancel}>
+            <Button
+            className="location-delete"
+            onClick={handleCancel}
+            colorScheme='green'
+            variant='outline'>
               No, I changed my mind!
             </Button>
-            <Button className="location-delete" onClick={handleDelete}>
+            <Button
+            className="location-delete"
+            onClick={handleDelete}
+            colorScheme='green'
+            variant='outline'>
               Yes, delete it!
             </Button>
           </Flex>

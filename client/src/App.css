@@ -48,3 +48,7 @@
 .main {
   margin-top: 100px;
 }
+
+.shadow-color {
+  box-shadow: 0 0 0 3px rgba(159, 122, 234, 0.6), 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}

@@ -68,7 +68,12 @@ const IdeaForm = ({ locationId, user }) => {
                   onChange={handleChange}
               />
             </FormControl>
-            <Button type="submit" mt="2" mb="2">
+            <Button
+            type="submit"
+            mt="4"
+            mb="2"
+            colorScheme='green'
+            variant='outline'>
               Add New Idea
             </Button>
               {/* <div className="flex-row flex-end">

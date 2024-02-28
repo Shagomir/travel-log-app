@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/auth";
 import { ADD_USER } from "../utils/mutations";
+import theme from "../theme.js";
 import {
   AbsoluteCenter,
   Button,
@@ -46,14 +47,18 @@ function Signup(props) {
       [name]: value,
     });
   };
+
+  const boxShadow = `${theme.shadows.xl}, ${theme.shadows.green}`;
+
   //   The signup form will allow users to sign up for the application.
   return (
     <AbsoluteCenter>
       <Card
-        boxShadow='sm' p='6' rounded='md' bg='white'
+        boxShadow={boxShadow} p='6' rounded='md' bg='white'
         direction={{ base: 'column', sm: 'row' }}
         overflow='hidden'
-        variant='outline'>
+        variant='outline'
+        mt={10}>
         <Image
           objectFit='cover'
           maxW={{ base: '100%', sm: '250px' }}
@@ -96,7 +101,14 @@ function Signup(props) {
                 />
               </FormControl>
               <div>
-                <Button mt="3" mb="3" type="submit">Submit</Button>
+                <Button
+                  colorScheme='green'
+                  variant='outline'
+                  mt="3"
+                  mb="3"
+                  type="submit">
+                    Submit
+                    </Button>
               </div>
               <Link to="/login">← Go to Login</Link>
             </CardBody>

@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { LOGIN } from "../utils/mutations";
 import Auth from "../utils/auth";
+import theme from "../theme.js";
 import {
   AbsoluteCenter,
   Box,
@@ -19,6 +20,7 @@ import {
   Input,
   Image,
   Stack,
+  ChakraProvider,
 } from '@chakra-ui/react';
 
 function Login(props) {
@@ -48,11 +50,13 @@ function Login(props) {
     });
   };
 
+  const boxShadow = `${theme.shadows.xl}, ${theme.shadows.green}`;
+
   //   The login form will allow users to log in to the application.
   return (
-    <AbsoluteCenter>
+      <AbsoluteCenter>
         <Card
-          boxShadow='sm' p='6' rounded='md' bg='white'
+          boxShadow={boxShadow} p='6' rounded='md' bg='white'
           direction={{ base: 'column', sm: 'row' }}
           overflow='hidden'
           variant='outline'>
@@ -93,14 +97,21 @@ function Login(props) {
                   </div>
                 ) : null}
                 <div>
-                  <Button mt={3} mb={3} type="submit">Submit</Button>
+                  <Button
+                  colorScheme='green'
+                  variant='outline'
+                  mt={3}
+                  mb={3}
+                  type="submit">
+                    Submit
+                    </Button>
                 </div>
                 <Link to="/signup">← Go to Signup</Link>
               </form>
             </CardBody>
           </Stack>
         </Card>
-    </AbsoluteCenter>
+      </AbsoluteCenter>
   );
 }
 

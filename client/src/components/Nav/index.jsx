@@ -22,8 +22,15 @@ function Nav() {
           <Flex position="fixed" top="1rem" right="1rem" align="center">
             <Flex display={["none", "none", "flex", "flex"]}>
               <Link to="/location">
-                <Button variant="ghost" aria-label="locations" my={5} w="100%">
+                <Button
+                colorScheme="green"
+                variant="ghost"
+                aria-label="locations"
+                my={5}
+                w="100%">
+
                   My Locations
+
                 </Button>
               </Link>
               <Button
@@ -31,13 +38,16 @@ function Nav() {
                   Auth.logout();
                   window.location.href = "/";
                 }}
+                colorScheme="green"
                 variant="ghost"
                 aria-label="Home"
                 my={5}
                 w="100%"
               >
-                Logout
-              </Button>
+
+                  Logout
+
+                  </Button>
             </Flex>
             <IconButton
               aria-label="Open Menu"
@@ -83,6 +93,7 @@ function Nav() {
                   setHeight("0px");
                   window.location.assign(`/location`);
                 }}
+                colorScheme="green"
                 variant="ghost"
                 aria-label="Home"
                 my={5}
@@ -97,6 +108,7 @@ function Nav() {
                   changeDisplay("none");
                   window.location.href = "/";
                 }}
+                colorScheme="green"
                 variant="ghost"
                 aria-label="Home"
                 my={5}
@@ -114,12 +126,22 @@ function Nav() {
           <Flex position="fixed" top="1rem" right="1rem" align="center">
             <Flex display={["none", "none", "flex", "flex"]}>
               <Link to="/signup">
-                <Button variant="ghost" aria-label="Home" my={5} w="100%">
+                <Button
+                colorScheme="green"
+                variant="ghost"
+                aria-label="Home"
+                my={5}
+                w="100%">
                   Signup
                 </Button>
               </Link>
               <Link to="/login">
-                <Button variant="ghost" aria-label="Home" my={5} w="100%">
+                <Button
+                colorScheme="green"
+                variant="ghost"
+                aria-label="Home"
+                my={5}
+                w="100%">
                   Login
                 </Button>
               </Link>

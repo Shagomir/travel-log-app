@@ -9,7 +9,9 @@ const Home = () => {
   return (
     <Container mt={"300px"}>
       <Center>
-        <Button>
+        <Button
+        colorScheme='green'
+        variant='outline'>
           <a href="/login">Please Log In!</a>
         </Button>
       </Center>
