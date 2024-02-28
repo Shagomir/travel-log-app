@@ -23,7 +23,7 @@ import {
   AbsoluteCenter,
   Center,
   SimpleGrid,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 function location() {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -47,14 +47,18 @@ function location() {
   // if user has no locations, display message to create some
   if (!user.locations.length) {
     return (
-      <Container>
+      <Container pos="absolute" zIndex="0">
         <Center>
           <Card
-            boxShadow='sm' p='6' rounded='md' bg='white'
-            direction={{ base: 'column', s: 'row' }}
-            align='center'
-            overflow='hidden'
-            variant='outline'>
+            boxShadow="sm"
+            p="6"
+            rounded="md"
+            bg="white"
+            direction={{ base: "column", s: "row" }}
+            align="center"
+            overflow="hidden"
+            variant="outline"
+          >
             <CardBody>
               <Heading size="md">
                 Welcome, {user.username}! You have no locations yet!
@@ -63,17 +67,11 @@ function location() {
           </Card>
         </Center>
         <Button onClick={onOpen}>Add Location</Button>
-        <Drawer
-          isOpen={isOpen}
-          placement='right'
-          onClose={onClose}
-        >
+        <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton />
-            <DrawerHeader borderBottomWidth='1px'>
-              Add a Location
-            </DrawerHeader>
+            <DrawerHeader borderBottomWidth="1px">Add a Location</DrawerHeader>
             <div>
               <Locationform user={user} />
             </div>
@@ -84,21 +82,23 @@ function location() {
   }
   // if user is logged in and has locations, display them
   return (
-    <Container mt={10}>
+    <Container pos="absolute" zIndex={-1} mt={10}>
       <SimpleGrid columns={1} spacing={10} mb={5}>
         <Card
-          boxShadow='sm' p='6' rounded='md' bg='white'
-          direction={{ base: 'column', s: 'row' }}
-          align='center'
-          overflow='hidden'
-          variant='outline'>
+          boxShadow="sm"
+          p="6"
+          rounded="md"
+          bg="white"
+          direction={{ base: "column", s: "row" }}
+          align="center"
+          overflow="hidden"
+          variant="outline"
+        >
           <CardBody>
             <Heading size="md">
               Welcome, {user.username}! Here are your existing locations!
             </Heading>
-            <Text>
-              Click on a location to edit it.
-            </Text>
+            <Text>Click on a location to edit it.</Text>
           </CardBody>
         </Card>
       </SimpleGrid>
@@ -111,13 +111,15 @@ function location() {
               {user.locations.map((location) => (
                 <Card key={location._id}>
                   <CardHeader>
-                    <Heading size='md'>{location.locationText}</Heading>
+                    <Heading size="md">{location.locationText}</Heading>
                   </CardHeader>
                   <CardBody>
                     <Image src={location.imageURL}></Image>
                   </CardBody>
                   <CardFooter>
-                    <Button as={Link} to={`/location/${location._id}`}>View here</Button>
+                    <Button as={Link} to={`/location/${location._id}`}>
+                      View here
+                    </Button>
                   </CardFooter>
                 </Card>
               ))}
@@ -125,18 +127,14 @@ function location() {
           </>
         ) : null}
       </div>
-      <Button mt={5} onClick={onOpen}>Add Location</Button>
-      <Drawer
-        isOpen={isOpen}
-        placement='right'
-        onClose={onClose}
-      >
+      <Button mt={5} onClick={onOpen}>
+        Add Location
+      </Button>
+      <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
         <DrawerContent>
           <DrawerCloseButton />
-          <DrawerHeader borderBottomWidth='1px'>
-            Add a Location
-          </DrawerHeader>
+          <DrawerHeader borderBottomWidth="1px">Add a Location</DrawerHeader>
           <div>
             <Locationform user={user} />
           </div>
