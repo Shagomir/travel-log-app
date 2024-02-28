@@ -20,6 +20,7 @@ import {
   Card,
   Image,
   Container,
+  Heading,
 } from "@chakra-ui/react";
 import EditForm from "../components/EditForm";
 
@@ -60,7 +61,7 @@ const ListDetail = () => {
         <Container mt={"150px"}>
           <Card width="90%" margin="auto">
             <div>
-              <h4>{location.locationText}</h4>
+              <Heading>{location.locationText}</Heading>
               <p>{location.geolocation}</p>
 
               {location.imageURL && (

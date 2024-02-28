@@ -42,7 +42,7 @@ function App() {
               <Image
                 width={{ sm: "200px", md: "200px", lg: "300px", xl: "350px" }}
                 height="auto"
-                src="assets\traveler-logo.png"
+                src="./assets/traveler-logo.png"
               />
             </Link>
           </Flex>
