@@ -35,20 +35,19 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <PageProvider>
-        <Flex>
+        <Flex height={0}>
+          <Nav />
           <Flex>
-            <Link position="fixed" my={0} zIndex={-2} to="/">
+            <Link position="fixed" my={0} to="/" zIndex={0}>
               <Image
-                width="200px"
+                width={{ sm: "200px", md: "200px", lg: "300px", xl: "350px" }}
                 height="auto"
-                src="./assets/traveler-logo.png"
+                src="assets\traveler-logo.png"
               />
             </Link>
-            <Nav />
           </Flex>
-          <main className="main">
-            <Outlet />
-          </main>
+
+          <Outlet />
         </Flex>
       </PageProvider>
     </ApolloProvider>

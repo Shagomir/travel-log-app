@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 // import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-// ask tutor if this should be updated
+
 // import { createBreakpoints } from "@chakra-ui/theme-tools";
 
 import App from "./App.jsx";
@@ -13,7 +13,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import List from "./pages/List";
 import Confirm from "./pages/Confirm";
-import Edit from "./pages/Edit";
+// import Edit from "./pages/Edit";
 
 // const breakpoints = createBreakpoints({
 //   sm: '48em',
@@ -28,14 +28,14 @@ const colors = {
     900: "",
     800: "",
     700: "",
-  }
+  },
 };
 
 const fonts = {
   heading: `'Prompt', sans-serif`,
 };
 
-const theme = extendTheme ({ colors, fonts });
+const theme = extendTheme({ colors, fonts });
 
 const router = createBrowserRouter([
   {
@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         path: "/delete/:id",
         element: <Confirm />,
       },
-      { path: "/edit/:id", element: <Edit /> },
+      // { path: "/edit/:id", element: <Edit /> },
       { path: "*", element: <NoMatch /> },
     ],
   },
