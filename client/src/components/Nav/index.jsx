@@ -1,7 +1,7 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
-import { useState } from 'react';
-import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
+import { useState } from "react";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import {
   Heading,
   Flex,
@@ -10,23 +10,31 @@ import {
   IconButton,
   Text,
   Image,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
 function Nav() {
-  const [display, changeDisplay] = useState('none')
+  const [display, changeDisplay] = useState("none");
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
         <Flex>
           <Flex position="fixed" top="1rem" right="1rem" align="center">
-            <Flex
-              display={["none", "none", "flex", "flex"]}>
+            <Flex display={["none", "none", "flex", "flex"]}>
               <Link to="/location">
                 <Button variant="ghost" aria-label="locations" my={5} w="100%">
                   My Locations
                 </Button>
               </Link>
-              <Button onClick={() => { Auth.logout(); window.location.href = '/'; }} variant="ghost" aria-label="Home" my={5} w="100%">
+              <Button
+                onClick={() => {
+                  Auth.logout();
+                  window.location.href = "/";
+                }}
+                variant="ghost"
+                aria-label="Home"
+                my={5}
+                w="100%"
+              >
                 Logout
               </Button>
             </Flex>
@@ -35,39 +43,48 @@ function Nav() {
               size="lg"
               mr={2}
               icon={<HamburgerIcon />}
-              onClick={() => changeDisplay('flex')}
-              display={['flex', 'flex', 'none', 'none']}/>
+              onClick={() => changeDisplay("flex")}
+              display={["flex", "flex", "none", "none"]}
+            />
           </Flex>
           <Flex
-          w='100vw'
-          display={display}
-          bgColor='gray.50'
-          zIndex={20}
-          h='100vh'
-          pos='fixed'
-          top='0'
-          left='0'
-          overflowY='auto'
-          flexDirection='column'
+            w="100vw"
+            display={display}
+            bgColor="gray.50"
+            zIndex={20}
+            h="100vh"
+            pos="fixed"
+            top="0"
+            left="0"
+            overflowY="auto"
+            flexDirection="column"
           >
-            <Flex justify='flex-end'>
+            <Flex justify="flex-end">
               <IconButton
-              mt={2}
-              mr={2}
-              aria-label="Close Menu"
-              size="lg"
-              icon={<CloseIcon />}
-              onClick={() => changeDisplay('none')}/>
+                mt={2}
+                mr={2}
+                aria-label="Close Menu"
+                size="lg"
+                icon={<CloseIcon />}
+                onClick={() => changeDisplay("none")}
+              />
             </Flex>
-            <Flex
-              flexDirection="column"
-              align="center">
+            <Flex flexDirection="column" align="center">
               <Link to="/location">
                 <Button variant="ghost" aria-label="Home" my={5} w="100%">
                   My Locations
                 </Button>
               </Link>
-              <Button onClick={() => { Auth.logout(); window.location.href = '/'; }} variant="ghost" aria-label="Home" my={5} w="100%">
+              <Button
+                onClick={() => {
+                  Auth.logout();
+                  window.location.href = "/";
+                }}
+                variant="ghost"
+                aria-label="Home"
+                my={5}
+                w="100%"
+              >
                 Logout
               </Button>
             </Flex>
@@ -78,8 +95,7 @@ function Nav() {
       return (
         <Flex>
           <Flex position="fixed" top="1rem" right="1rem" align="center">
-            <Flex
-              display={["none", "none", "flex", "flex"]}>
+            <Flex display={["none", "none", "flex", "flex"]}>
               <Link to="/signup">
                 <Button variant="ghost" aria-label="Home" my={5} w="100%">
                   Signup
@@ -98,12 +114,10 @@ function Nav() {
   }
 
   return (
-    <Flex position="fixed" top="1rem" left="1rem" align="center" my={5}>
+    <Flex position="fixed" top="1rem" left="1rem" align="center" my={0}>
       <Heading>
         <Link to="/">
-          <Image
-            src='./assets/traveler-logo.png'
-          />
+          <Image src="./assets/traveler-logo.png" />
         </Link>
         <nav>{showNavigation()}</nav>
       </Heading>
