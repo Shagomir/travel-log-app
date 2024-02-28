@@ -14,6 +14,7 @@ import {
 
 function Nav() {
   const [display, changeDisplay] = useState("none");
+  const [height, setHeight] = useState("0px");
   function showNavigation() {
     if (Auth.loggedIn()) {
       return (
@@ -43,7 +44,10 @@ function Nav() {
               size="lg"
               mr={2}
               icon={<HamburgerIcon />}
-              onClick={() => changeDisplay("flex")}
+              onClick={() => {
+                setHeight("100vh");
+                changeDisplay("flex");
+              }}
               display={["flex", "flex", "none", "none"]}
             />
           </Flex>
@@ -52,7 +56,7 @@ function Nav() {
             display={display}
             bgColor="gray.50"
             zIndex={20}
-            h="100vh"
+            h={height}
             pos="fixed"
             top="0"
             left="0"
@@ -66,18 +70,31 @@ function Nav() {
                 aria-label="Close Menu"
                 size="lg"
                 icon={<CloseIcon />}
-                onClick={() => changeDisplay("none")}
+                onClick={() => {
+                  changeDisplay("none");
+                  setHeight("0px");
+                }}
               />
             </Flex>
             <Flex flexDirection="column" align="center">
-              <Link to="/location">
-                <Button variant="ghost" aria-label="Home" my={5} w="100%">
-                  My Locations
-                </Button>
-              </Link>
+              <Button
+                onClick={() => {
+                  changeDisplay("none");
+                  setHeight("0px");
+                  window.location.assign(`/location`);
+                }}
+                variant="ghost"
+                aria-label="Home"
+                my={5}
+                w="100%"
+              >
+                My Locations
+              </Button>
+
               <Button
                 onClick={() => {
                   Auth.logout();
+                  changeDisplay("none");
                   window.location.href = "/";
                 }}
                 variant="ghost"
@@ -120,7 +137,8 @@ function Nav() {
       left="1rem"
       align="center"
       my={0}
-      zIndex={0}
+      zIndex={3}
+      height={["50px", "50px", "100px", "100px"]}
     >
       <Heading>
         <nav>{showNavigation()}</nav>

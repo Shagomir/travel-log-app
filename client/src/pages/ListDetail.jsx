@@ -15,6 +15,11 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
+  Box,
+  Flex,
+  Card,
+  Image,
+  Container,
 } from "@chakra-ui/react";
 import EditForm from "../components/EditForm";
 
@@ -52,39 +57,50 @@ const ListDetail = () => {
   if (Auth.loggedIn()) {
     return (
       <>
-        <div>
-          <h4>{location.locationText}</h4>
-          <p>{location.geolocation}</p>
-          {location.imageURL && (
-            <img src={location.imageURL} alt="Location Image" />
-          )}
-          <Button
-            className="location-edit"
-            onMouseEnter={EditButton}
-            onClick={onOpen}
-            mb={5}
-          >
-            Edit Location
-          </Button>
+        <Container mt={"150px"}>
+          <Card width="90%" margin="auto">
+            <div>
+              <h4>{location.locationText}</h4>
+              <p>{location.geolocation}</p>
 
-          <Button className="location-delete" onClick={handleDelete} mb={5}>
-            Delete Location
-          </Button>
-          <ul>
-            {ideas.map((idea) => (
-              // console.log(idea),
-              <Idea
-                key={idea._id}
-                locationId={id}
-                ideaId={idea._id}
-                ideaText={idea.ideaText}
-              />
-            ))}
-          </ul>
-        </div>
-        <Button onMouseEnter={AddIdeaButton} onClick={onOpen} mt={4}>
-          Add an Idea
-        </Button>
+              {location.imageURL && (
+                <Image
+                  src={location.imageURL}
+                  alt="Location Image"
+                  my={5}
+                  mx={"auto"}
+                  width="60%"
+                />
+              )}
+              <Button
+                className="location-edit"
+                onMouseEnter={EditButton}
+                onClick={onOpen}
+                m={5}
+              >
+                Edit Location
+              </Button>
+
+              <Button className="location-delete" onClick={handleDelete} m={5}>
+                Delete Location
+              </Button>
+              <ul>
+                {ideas.map((idea) => (
+                  // console.log(idea),
+                  <Idea
+                    key={idea._id}
+                    locationId={id}
+                    ideaId={idea._id}
+                    ideaText={idea.ideaText}
+                  />
+                ))}
+              </ul>
+            </div>
+            <Button onMouseEnter={AddIdeaButton} onClick={onOpen} m={5}>
+              Add an Idea
+            </Button>
+          </Card>
+        </Container>
 
         <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
           <DrawerOverlay />

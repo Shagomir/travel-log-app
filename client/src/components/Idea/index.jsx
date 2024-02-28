@@ -18,6 +18,7 @@ import {
   ListItem,
   // Divider,
 } from "@chakra-ui/react";
+import { DeleteIcon } from "@chakra-ui/icons";
 
 function Idea({ locationId, ideaId, ideaText }) {
   const [deleteIdea, { error }] = useMutation(REMOVE_IDEA);
@@ -41,15 +42,25 @@ function Idea({ locationId, ideaId, ideaText }) {
   //   The Idea component will display the idea text and a delete button.
   return (
     <List key={ideaId}>
-      <Card mb={1}>
-      <ListItem >
-        {/* <Divider> */}
-      {ideaText}
-      {/* </Divider> */}
-      <Button className="idea-delete" onClick={handleDelete}>
-        X
-      </Button>
-      </ListItem>
+      <Card mb={2}>
+        <ListItem>
+          <Flex justifyContent="space-between">
+            <p></p>
+            {/* <Divider> */}
+            <p>{ideaText}</p>
+            {/* </Divider> */}
+            <Button
+              color={"black"}
+              background={"white"}
+              justifyContent={"flex-end"}
+              mx="10px"
+              className="idea-delete"
+              onClick={handleDelete}
+            >
+              <DeleteIcon />
+            </Button>
+          </Flex>
+        </ListItem>
       </Card>
     </List>
   );
