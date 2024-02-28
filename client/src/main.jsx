@@ -13,6 +13,8 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import List from "./pages/List";
 import Confirm from "./pages/Confirm";
+
+const LogoImage = "./assets/traveler-logo.png";
 // import Edit from "./pages/Edit";
 
 // const breakpoints = createBreakpoints({
@@ -72,8 +74,12 @@ const router = createBrowserRouter([
         path: "/delete/:id",
         element: <Confirm />,
       },
-      // { path: "/edit/:id", element: <Edit /> },
-      { path: "*", element: <NoMatch /> },
+      // {
+      //   path: "/assets/traveler-logo.png",
+      //   element: LogoImage,
+      // },
+      // // { path: "/edit/:id", element: <Edit /> },
+      // { path: "*", element: <NoMatch /> },
     ],
   },
 ]);

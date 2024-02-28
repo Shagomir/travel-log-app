@@ -16,6 +16,8 @@ const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+const baseUrl = window.location.protocol + "//" + window.location.host;
+
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("id_token");
   return {
@@ -42,7 +44,7 @@ function App() {
               <Image
                 width={{ sm: "200px", md: "200px", lg: "300px", xl: "350px" }}
                 height="auto"
-                src="./assets/traveler-logo.png"
+                src={`${baseUrl}/assets/traveler-logo.png`}
               />
             </Link>
           </Flex>
