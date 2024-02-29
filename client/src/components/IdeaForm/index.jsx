@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_IDEA } from "../../utils/mutations";
 import {
-  Box,
   Button,
-  ButtonGroup,
   Card,
   CardBody,
-  Flex,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Heading,
   Input,
 } from "@chakra-ui/react";
 

@@ -2,18 +2,9 @@ import React from "react";
 import { useMutation } from "@apollo/client";
 import { REMOVE_IDEA } from "../../utils/mutations";
 import {
-  Box,
   Button,
-  ButtonGroup,
   Card,
-  CardBody,
   Flex,
-  FormControl,
-  FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Heading,
-  Input,
   List,
   ListItem,
   // Divider,

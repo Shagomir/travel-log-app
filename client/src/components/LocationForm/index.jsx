@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import { useMutation } from "@apollo/client";
 import { ADD_LOCATION } from "../../utils/mutations";
 import {
-  Box,
   Button,
-  ButtonGroup,
   Card,
   CardBody,
-  Flex,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Heading,
   Input,
 } from "@chakra-ui/react";
 
@@ -86,7 +80,12 @@ function Locationform({ user }) {
             />
           </FormControl>
           <div className="flex-row flex-end">
-            <Button type="submit" mt="2" mb="2">
+            <Button
+              colorScheme='green'
+              variant='outline'
+              type="submit"
+              mt="4"
+              mb="2">
               Add Location
             </Button>
           </div>
