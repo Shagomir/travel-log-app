@@ -5,11 +5,8 @@ import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import {
   Heading,
   Flex,
-  Box,
   Button,
   IconButton,
-  Text,
-  Image,
 } from "@chakra-ui/react";
 
 function Nav() {

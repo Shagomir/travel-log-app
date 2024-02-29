@@ -3,7 +3,11 @@ import { REMOVE_LOCATION } from "../utils/mutations";
 import { useParams } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import theme from "../theme.js";
-import { Button, Card, Container, Flex, Heading } from "@chakra-ui/react";
+import { Button,
+  Card,
+  Container,
+  Flex,
+  Heading } from "@chakra-ui/react";
 import Auth from "../utils/auth";
 import LoginReminder from "../components/LoginReminder";
 

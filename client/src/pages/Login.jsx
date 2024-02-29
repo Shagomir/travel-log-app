@@ -6,21 +6,15 @@ import Auth from "../utils/auth";
 import theme from "../theme.js";
 import {
   AbsoluteCenter,
-  Box,
   Button,
-  ButtonGroup,
   Card,
   CardBody,
-  Flex,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Heading,
   Input,
   Image,
   Stack,
-  ChakraProvider,
 } from '@chakra-ui/react';
 
 function Login(props) {

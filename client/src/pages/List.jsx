@@ -14,8 +14,6 @@ import {
   CardHeader,
   CardFooter,
   Drawer,
-  DrawerBody,
-  DrawerFooter,
   DrawerHeader,
   DrawerOverlay,
   DrawerContent,
@@ -23,7 +21,6 @@ import {
   Heading,
   Image,
   Text,
-  AbsoluteCenter,
   Center,
   SimpleGrid,
   Flex,
@@ -151,6 +148,7 @@ function location() {
         </div>
         <Button
         mt={10}
+        mb={10}
         onClick={onOpen}
         colorScheme='green'
         variant='outline'>

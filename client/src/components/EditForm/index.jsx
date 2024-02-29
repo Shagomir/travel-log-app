@@ -3,19 +3,12 @@ import { useMutation } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { UPDATE_LOCATION } from "../../utils/mutations";
 import {
-  AbsoluteCenter,
   Button,
-  ButtonGroup,
   Card,
   CardBody,
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
-  Heading,
-  Image,
   Input,
-  Stack,
 } from "@chakra-ui/react";
 
 const EditForm = ({ location }) => {
